@@ -1,0 +1,59 @@
+{
+  "projectType": "general",
+  "projectName": "ACE Copilot",
+  "projectDescription": "A Windows desktop application for corporate visual metrics and traceability management.",
+  "theme": "linden",
+  "primaryColor": "#0066CC",
+  "lightColor": "#3385D6",
+  "darkColor": "#0052A3",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Getting Started",
+        "pages": [
+          "introduction",
+          "installation",
+          "quickstart"
+        ]
+      },
+      {
+        "group": "User Guide",
+        "pages": [
+          "guide/overview",
+          "guide/metrics",
+          "guide/traceability"
+        ]
+      },
+      {
+        "group": "Features",
+        "pages": [
+          "features/visual-metrics",
+          "features/corporate-dashboard",
+          "features/data-export"
+        ]
+      },
+      {
+        "group": "Resources",
+        "pages": [
+          "releases",
+          "troubleshooting",
+          "faq"
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Visual corporate metrics dashboard",
+    "Comprehensive traceability tracking",
+    "Windows desktop application",
+    "Regular version updates",
+    "Data visualization tools"
+  ],
+  "publicApiSurface": [
+    "Version 2.3 - Latest release with visual metrics and traceability",
+    "AceCopilot.exe - Main application executable",
+    "Automatic update notification system",
+    "Corporate metrics visualization",
+    "Traceability management interface"
+  ]
+}
