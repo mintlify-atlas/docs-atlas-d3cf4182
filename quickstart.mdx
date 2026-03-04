@@ -1,80 +1,303 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: 'Quick Start Guide'
+description: 'Get up and running with ACE Copilot in minutes - create your first dashboard and start tracking metrics'
 ---
 
-## Get started in three steps
+# Quick Start Guide
 
-Get your documentation site running locally and make your first customization.
-
-### Step 1: Set up your local environment
-
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 2: Deploy your changes
-
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
-
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
-
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 3: Go live
-
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
-
-## Next steps
-
-Now that you have your docs running, explore these key features:
-
-<CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
-</CardGroup>
+Welcome to ACE Copilot! This guide will help you get up and running quickly, from first launch to creating your first visual metrics dashboard.
 
 <Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
+  Before proceeding, make sure you have [installed ACE Copilot](/installation) on your Windows system.
 </Note>
+
+## First-Time Setup
+
+<Steps>
+  <Step title="Launch ACE Copilot">
+    Open ACE Copilot from your Start menu, desktop shortcut, or by double-clicking the executable file.
+    
+    On first launch, you may be greeted with a welcome screen or setup wizard.
+  </Step>
+  
+  <Step title="Configure Basic Settings">
+    Set up your initial preferences:
+    
+    - **User Profile**: Enter your name and role (optional)
+    - **Organization**: Configure your organization name
+    - **Theme**: Choose between light and dark mode
+    - **Language**: Select your preferred language
+    
+    <Tip>
+      These settings can be changed later from the Settings or Preferences menu.
+    </Tip>
+  </Step>
+  
+  <Step title="Review Privacy and Data Settings">
+    Configure how ACE Copilot handles your data:
+    
+    - Review data storage location
+    - Set up backup preferences (if available)
+    - Configure synchronization settings (if applicable)
+  </Step>
+  
+  <Step title="Complete Setup">
+    Click **Finish** or **Get Started** to complete the initial setup and access the main interface.
+  </Step>
+</Steps>
+
+## Understanding the Interface
+
+ACE Copilot's interface is organized into several key areas:
+
+<CardGroup cols={2}>
+  <Card title="Main Dashboard" icon="table-columns">
+    The central workspace where your visual metrics and charts are displayed.
+  </Card>
+  
+  <Card title="Navigation Panel" icon="bars">
+    Side or top menu for accessing different sections: dashboards, metrics, traceability, and settings.
+  </Card>
+  
+  <Card title="Metrics Library" icon="database">
+    Repository of all your configured metrics and KPIs available for visualization.
+  </Card>
+  
+  <Card title="Traceability View" icon="timeline">
+    Dedicated area for viewing audit trails, change history, and data lineage.
+  </Card>
+</CardGroup>
+
+## Creating Your First Dashboard
+
+Let's create your first visual metrics dashboard to start tracking corporate performance.
+
+<Steps>
+  <Step title="Open Dashboard Creator">
+    Navigate to the dashboard section and click **New Dashboard** or **Create Dashboard**.
+    
+    You'll be prompted to name your dashboard and optionally provide a description.
+    
+    ```
+    Dashboard Name: Q1 Performance Metrics
+    Description: Track key performance indicators for Q1 2026
+    ```
+  </Step>
+  
+  <Step title="Choose Dashboard Template">
+    Select a template that matches your needs:
+    
+    - **Blank Dashboard**: Start from scratch with full customization
+    - **Executive Summary**: Pre-configured for high-level KPIs
+    - **Project Tracking**: Designed for project management metrics
+    - **Custom Template**: Use a previously saved template
+    
+    <Note>
+      For your first dashboard, we recommend starting with a template to see how metrics are organized.
+    </Note>
+  </Step>
+  
+  <Step title="Add Your First Metric">
+    Add metrics to your dashboard:
+    
+    1. Click **Add Metric** or **Add Widget**
+    2. Select the metric type:
+       - Chart (line, bar, pie, area)
+       - Number/KPI card
+       - Table/grid
+       - Gauge/indicator
+    3. Configure the metric:
+       - Choose data source
+       - Set metric parameters
+       - Customize appearance (colors, labels, thresholds)
+    
+    <Tip>
+      Start with 2-3 key metrics rather than overwhelming your dashboard with too many visualizations.
+    </Tip>
+  </Step>
+  
+  <Step title="Customize Layout">
+    Arrange your metrics by:
+    
+    - Dragging and dropping widgets to reposition them
+    - Resizing widgets to emphasize important metrics
+    - Grouping related metrics together
+    - Adding sections or dividers for organization
+  </Step>
+  
+  <Step title="Configure Traceability">
+    Enable traceability tracking for your metrics:
+    
+    1. Select a metric or widget
+    2. Open traceability settings
+    3. Enable **Track Changes**
+    4. Configure audit trail preferences:
+       - What changes to track
+       - How long to retain history
+       - Who can view audit logs
+    
+    <Warning>
+      Traceability settings may impact performance for large datasets. Start with essential metrics.
+    </Warning>
+  </Step>
+  
+  <Step title="Save and Activate">
+    Once satisfied with your dashboard:
+    
+    1. Click **Save** to preserve your configuration
+    2. Set the dashboard as **Active** or **Default** (optional)
+    3. Configure refresh intervals for real-time updates
+    
+    Your dashboard is now live and ready to use!
+  </Step>
+</Steps>
+
+## Basic Navigation
+
+Here are the essential navigation tips for working efficiently in ACE Copilot:
+
+### Switching Between Dashboards
+
+- Use the dashboard selector in the navigation panel
+- Create favorites for quick access to frequently used dashboards
+- Use keyboard shortcuts (if available) for rapid switching
+
+### Viewing Traceability Information
+
+<Steps>
+  <Step title="Access Traceability View">
+    Click on any metric or data point to view its traceability information.
+  </Step>
+  
+  <Step title="Review Audit Trail">
+    See complete history including:
+    - When changes were made
+    - Who made the changes
+    - What was changed (before/after values)
+    - Why changes were made (if comments were added)
+  </Step>
+  
+  <Step title="Export Traceability Reports">
+    Generate compliance reports or export audit trails for external review.
+  </Step>
+</Steps>
+
+### Managing Metrics
+
+- **Add Metrics**: Click the **+** icon or **Add Metric** button
+- **Edit Metrics**: Right-click a metric and select **Edit** or **Configure**
+- **Delete Metrics**: Select a metric and press Delete or use the context menu
+- **Duplicate Metrics**: Copy existing metrics to save configuration time
+
+<Tip>
+  Use the search function to quickly find specific metrics in large dashboards.
+</Tip>
+
+## Common Tasks
+
+### Exporting Data
+
+Export your metrics and visualizations:
+
+1. Select the dashboard or metric to export
+2. Choose **Export** from the menu
+3. Select format: PDF, Excel, CSV, or image
+4. Configure export options
+5. Save to your preferred location
+
+### Sharing Dashboards
+
+Share dashboards with team members:
+
+1. Open the dashboard to share
+2. Click **Share** or **Collaborate**
+3. Set permissions (view-only or edit access)
+4. Generate share link or invite users directly
+
+### Setting Up Alerts
+
+Create alerts for critical metrics:
+
+1. Select a metric
+2. Open **Alert Settings**
+3. Define threshold conditions
+4. Configure notification method (email, popup, etc.)
+5. Activate the alert
+
+<Note>
+  Alert functionality may require additional configuration or integration with notification systems.
+</Note>
+
+## Tips for Success
+
+<AccordionGroup>
+  <Accordion title="Start Simple">
+    Begin with a few essential metrics rather than trying to track everything at once. You can always add more complexity as you become comfortable with the tool.
+  </Accordion>
+  
+  <Accordion title="Use Templates">
+    Leverage built-in templates and duplicate successful dashboards to save time and maintain consistency.
+  </Accordion>
+  
+  <Accordion title="Enable Traceability Strategically">
+    Enable detailed traceability for compliance-critical metrics, but keep it lightweight for operational dashboards to maintain performance.
+  </Accordion>
+  
+  <Accordion title="Regular Maintenance">
+    Schedule time to review and update your dashboards, remove obsolete metrics, and optimize performance.
+  </Accordion>
+  
+  <Accordion title="Backup Your Work">
+    Regularly export or backup your dashboard configurations to prevent data loss.
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+### Dashboard Not Loading
+
+- Check that your data sources are accessible
+- Verify network connectivity if using remote data
+- Try refreshing the application
+- Check for any error messages in logs
+
+### Metrics Not Updating
+
+- Verify refresh interval settings
+- Check data source connection status
+- Ensure you have proper permissions to access the data
+- Try manually refreshing the metric
+
+### Performance Issues
+
+- Reduce the number of metrics per dashboard
+- Increase refresh intervals
+- Disable traceability for non-critical metrics
+- Close unused dashboards
+- Restart the application
+
+## Next Steps
+
+Now that you're familiar with the basics, explore more advanced features:
+
+<CardGroup cols={2}>
+  <Card title="User Guide" icon="book" href="/guide/overview">
+    Comprehensive guide to all ACE Copilot features and capabilities
+  </Card>
+  
+  <Card title="Corporate Dashboard" icon="chart-mixed" href="/features/corporate-dashboard">
+    Learn to create complex visualizations and custom metrics
+  </Card>
+  
+  <Card title="Traceability Management" icon="route" href="/guide/traceability">
+    Master audit trails, compliance reporting, and data lineage
+  </Card>
+  
+  <Card title="Visual Metrics" icon="chart-line" href="/features/visual-metrics">
+    Explore powerful data visualization and metrics capabilities
+  </Card>
+</CardGroup>
+
+<Tip>
+  Need help? Check the Help menu within ACE Copilot for additional resources, tutorials, and support options.
+</Tip>

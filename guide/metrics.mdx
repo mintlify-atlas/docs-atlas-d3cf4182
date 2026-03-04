@@ -1,0 +1,402 @@
+---
+title: Working with Metrics
+description: Create, configure, and monitor visual corporate metrics including custom metrics, data sources, thresholds, and alerts in ACE Copilot
+---
+
+# Working with Metrics
+
+ACE Copilot enables you to track and visualize corporate metrics across your organization. This guide covers everything from creating simple metrics to implementing sophisticated monitoring systems.
+
+## Understanding Metrics in ACE Copilot
+
+Metrics in ACE Copilot are quantifiable measurements that track business performance, operational efficiency, quality indicators, or any other numerical data important to your organization.
+
+### Metric Components
+
+Each metric consists of:
+
+- **Name and Description** - Clear identification of what is being measured
+- **Data Source** - Where the metric values come from (database, API, manual entry, CSV import)
+- **Unit of Measurement** - Dollars, percentages, counts, time units, etc.
+- **Visualization Type** - Line chart, bar chart, gauge, scorecard, or custom visualization
+- **Time Period** - Daily, weekly, monthly, or custom intervals
+- **Thresholds** - Acceptable ranges and alert triggers
+- **Historical Data** - Stored values for trend analysis
+
+<Note>
+ACE Copilot supports both real-time metrics (updated continuously) and batch metrics (updated on a schedule). Choose the appropriate type based on your data source capabilities and business needs.
+</Note>
+
+## Creating Custom Metrics
+
+Follow these steps to create a new metric:
+
+<Steps>
+
+<Step title="Open Metrics View">
+Navigate to View > Metrics View or press Ctrl+M. Click the "New Metric" button in the toolbar or press Ctrl+N.
+</Step>
+
+<Step title="Define Basic Properties">
+In the New Metric dialog:
+- Enter a descriptive **Name** (e.g., "Monthly Sales Revenue")
+- Add a **Description** explaining what this metric tracks and why it matters
+- Select the **Category** (Financial, Performance, Quality, Custom)
+- Choose the **Owner** (person or team responsible for this metric)
+</Step>
+
+<Step title="Select Visualization Type">
+Choose how this metric will be displayed:
+- **Line Chart** - Best for trends over time
+- **Bar Chart** - Compare values across periods
+- **Gauge** - Show current value against target
+- **Scorecard** - Display single value with status indicator
+- **Heat Map** - Visualize patterns in multi-dimensional data
+</Step>
+
+<Step title="Configure Time Settings">
+Set the time granularity:
+- **Measurement Frequency** - How often values are collected
+- **Display Period** - Default time range shown (last 7 days, last month, YTD)
+- **Aggregation Method** - Sum, average, min, max, or count for rollups
+</Step>
+
+<Step title="Save and Test">
+Click "Create Metric" to save. The metric appears in your Navigation Panel and is ready for data configuration.
+</Step>
+
+</Steps>
+
+<Warning>
+Metric names must be unique within a project. Use descriptive names that clearly indicate what is being measured to avoid confusion when managing many metrics.
+</Warning>
+
+## Configuring Metric Data Sources
+
+ACE Copilot supports multiple data source types for populating metric values:
+
+<Accordion>
+
+<AccordionGroup>
+
+<Accordion title="Database Connection">
+
+### Setting Up Database Metrics
+
+1. Right-click your metric and select "Configure Data Source"
+2. Choose "Database" from the source type dropdown
+3. Select an existing connection or click "New Connection"
+4. For new connections, provide:
+   - Connection name
+   - Database type (SQL Server, Oracle, MySQL, PostgreSQL)
+   - Server address and port
+   - Database name
+   - Authentication credentials
+   - Test the connection before saving
+
+5. Write or select a SQL query that returns your metric value:
+   ```sql
+   SELECT SUM(amount) as metric_value, 
+          MAX(updated_date) as metric_timestamp
+   FROM sales_transactions
+   WHERE transaction_date >= DATEADD(day, -1, GETDATE())
+   ```
+
+6. Map the query results:
+   - **Value Column** - Which column contains the metric value
+   - **Timestamp Column** - Which column indicates when the value was recorded
+   - **Additional Dimensions** - Optional columns for filtering or grouping
+
+7. Set the **Refresh Schedule** (every 15 minutes, hourly, daily, etc.)
+
+<Tip>
+Use parameterized queries with date ranges to avoid retrieving excessive data. ACE Copilot automatically substitutes date parameters based on the viewing window.
+</Tip>
+
+</Accordion>
+
+<Accordion title="API Integration">
+
+### Connecting to REST APIs
+
+1. Select "REST API" as the data source type
+2. Configure the API endpoint:
+   - **URL** - Full endpoint URL
+   - **Method** - GET or POST
+   - **Headers** - Authentication tokens, content type, etc.
+   - **Request Body** - For POST requests, define the JSON payload
+
+3. Test the API call and preview the response
+4. Define the **JSON Path** to extract the metric value from the response:
+   ```
+   $.data.metrics[0].value
+   ```
+
+5. Configure authentication:
+   - **API Key** - Header-based or query parameter
+   - **OAuth 2.0** - Set up client credentials flow
+   - **Basic Auth** - Username and password
+
+6. Set error handling:
+   - Retry count for failed requests
+   - Fallback behavior if data is unavailable
+   - Alert recipients for persistent failures
+
+<Note>
+API credentials are encrypted and stored securely. Use service accounts with read-only access for enhanced security.
+</Note>
+
+</Accordion>
+
+<Accordion title="File Import (CSV/Excel)">
+
+### Importing from Files
+
+1. Select "File Import" as the data source
+2. Choose import method:
+   - **One-time Import** - Manual upload of historical data
+   - **Watched Folder** - Automatically import files placed in a specific directory
+   - **Network Share** - Monitor a shared network location
+
+3. Configure file format:
+   - **Delimiter** - Comma, tab, semicolon, or custom
+   - **Header Row** - Specify which row contains column names
+   - **Date Format** - How dates are formatted in the file
+   - **Number Format** - Decimal separator and thousands separator
+
+4. Map columns:
+   - Identify which column contains the metric value
+   - Identify the timestamp column
+   - Optional: Map dimension columns for filtering
+
+5. For watched folders, set:
+   - Check frequency
+   - File naming pattern (e.g., `sales_*.csv`)
+   - Archive behavior (move processed files or leave in place)
+
+<Warning>
+Ensure imported files have consistent structure. Changes to column order or names will cause import failures.
+</Warning>
+
+</Accordion>
+
+<Accordion title="Manual Entry">
+
+### Manual Data Entry
+
+1. Select "Manual Entry" as the data source
+2. Configure entry settings:
+   - **Entry Frequency** - How often values should be entered
+   - **Reminder Notifications** - Alert assigned users when entry is due
+   - **Validation Rules** - Min/max acceptable values
+
+3. To enter values:
+   - Right-click the metric and select "Enter Value"
+   - Enter the value and timestamp
+   - Add optional notes or comments
+   - Click "Save Entry"
+
+4. View entry history:
+   - Right-click metric > "View Entry Log"
+   - See who entered each value and when
+   - Edit or delete incorrect entries
+
+<Tip>
+Manual entry is best for metrics that cannot be automated, such as subjective assessments or data from external meetings. For any metric that can be automated, use a database, API, or file import source instead.
+</Tip>
+
+</Accordion>
+
+</AccordionGroup>
+
+</Accordion>
+
+## Setting Up Metric Thresholds and Alerts
+
+Thresholds define acceptable ranges for metric values and trigger alerts when values fall outside these ranges.
+
+### Configuring Thresholds
+
+<Steps>
+
+<Step title="Access Threshold Settings">
+Right-click the metric and select "Configure Thresholds" or select the metric and click the "Thresholds" button in the Properties Panel.
+</Step>
+
+<Step title="Define Threshold Levels">
+Set up to three threshold levels:
+
+- **Target/Optimal Range** (Green) - Ideal performance zone
+  - Example: Sales between $900K and $1.1M
+
+- **Warning Range** (Yellow) - Acceptable but concerning
+  - Example: Sales between $800K-$900K or $1.1M-$1.2M
+
+- **Critical Range** (Red) - Unacceptable performance
+  - Example: Sales below $800K or above $1.2M
+</Step>
+
+<Step title="Choose Threshold Type">
+Select how thresholds are evaluated:
+
+- **Static Thresholds** - Fixed values that don't change
+- **Dynamic Thresholds** - Calculated based on historical average, standard deviation, or trend
+- **Comparative Thresholds** - Based on another metric's value
+- **Time-based Thresholds** - Different ranges for different times (e.g., higher targets during peak season)
+</Step>
+
+<Step title="Set Alert Behavior">
+Configure when and how alerts are triggered:
+
+- **Trigger Condition** - Single violation, sustained violation (multiple periods), or trend direction
+- **Alert Recipients** - Who receives notifications
+- **Alert Channels** - Email, in-app notification, or webhook
+- **Alert Frequency** - Immediate, once daily, or custom schedule
+- **Auto-resolution** - Whether alerts clear automatically when value returns to acceptable range
+</Step>
+
+</Steps>
+
+### Alert Management
+
+When a metric exceeds thresholds:
+
+1. **Visual Indicators** - The metric displays in red (critical) or yellow (warning) in all views
+2. **Status Bar Notification** - Alert count appears in the bottom-right corner
+3. **Alert Panel** - View all active alerts by clicking the notification icon
+4. **Email Notifications** - Sent to configured recipients based on alert rules
+
+<Note>
+You can temporarily suppress alerts for a metric during planned maintenance or known issues. Right-click the metric and select "Snooze Alerts" with a duration.
+</Note>
+
+### Alert Actions
+
+For each alert, you can:
+
+- **Acknowledge** - Mark as seen and under investigation
+- **Add Comment** - Document findings or corrective actions
+- **Create Incident** - Escalate to formal incident tracking
+- **Link to Traceability Item** - Connect to root cause analysis or corrective action
+- **Dismiss** - Close the alert if it's a false positive
+
+<Warning>
+Don't ignore sustained alerts. If a metric consistently violates thresholds, either take corrective action or adjust the thresholds to reflect realistic performance expectations.
+</Warning>
+
+## Best Practices for Metric Tracking
+
+### Define Clear Ownership
+
+Every metric should have a designated owner responsible for:
+- Ensuring data quality and accuracy
+- Responding to alerts and investigating anomalies
+- Maintaining threshold appropriateness
+- Documenting changes and decisions
+
+### Use Meaningful Names and Descriptions
+
+<Tip>
+**Good metric naming:**
+- "Monthly Recurring Revenue (MRR)" - Clear and specific
+- "Customer Acquisition Cost (CAC)" - Standard acronym with full name
+- "Support Ticket Resolution Time (Avg Hours)" - Indicates aggregation and unit
+
+**Poor metric naming:**
+- "Revenue" - Too vague, missing time period
+- "Metric 1" - No context
+- "The cost" - Unclear what cost is being measured
+</Tip>
+
+### Establish Regular Review Cycles
+
+- **Daily** - Check critical operational metrics and respond to alerts
+- **Weekly** - Review trends and adjust thresholds if needed
+- **Monthly** - Evaluate metric relevance and retire unused metrics
+- **Quarterly** - Align metrics with updated business objectives
+
+### Avoid Metric Overload
+
+<Warning>
+Tracking too many metrics leads to analysis paralysis and alert fatigue. Focus on metrics that:
+1. Directly support decision-making
+2. Have clear ownership and accountability
+3. Drive specific actions when thresholds are violated
+4. Provide unique insights (avoid redundant metrics)
+</Warning>
+
+### Document Metric Definitions
+
+For each metric, maintain documentation including:
+- **Business Context** - Why this metric matters and what decisions it supports
+- **Calculation Method** - Exact formula or query used
+- **Data Source** - Where the data originates and how often it updates
+- **Threshold Rationale** - Why current thresholds were chosen
+- **Historical Changes** - Log of adjustments to calculation or thresholds
+
+<Tip>
+Use the "Description" field in each metric to store this information, or attach a document using the "Attachments" feature in the Properties Panel.
+</Tip>
+
+### Validate Data Quality
+
+Regularly verify that metrics are calculating correctly:
+- Compare automated calculations against manual spot checks
+- Investigate sudden spikes or drops that don't align with business events
+- Monitor data source connection health in Tools > Data Source Configuration
+- Set up "heartbeat" metrics that confirm data is flowing (e.g., record count)
+
+### Leverage Metric Relationships
+
+Connect related metrics to understand cause and effect:
+- Link leading indicators (predictive) to lagging indicators (outcome)
+- Create calculated metrics that combine multiple data sources
+- Use metric hierarchies (e.g., company revenue → division revenue → team revenue)
+
+<Tip>
+When investigating an alert, check related metrics in the same timeframe. Often the root cause becomes clear when viewing multiple metrics together.
+</Tip>
+
+### Archive Obsolete Metrics
+
+Don't delete metrics that are no longer relevant:
+1. Right-click the metric and select "Archive"
+2. Archived metrics don't appear in active views but historical data is preserved
+3. You can restore archived metrics if needed via File > Manage Archived Items
+
+## Advanced Metric Features
+
+### Calculated Metrics
+
+Create metrics derived from other metrics:
+1. Create a new metric and select "Calculated" as the data source
+2. Use the formula builder to combine existing metrics:
+   ```
+   [Customer Lifetime Value] - [Customer Acquisition Cost]
+   ```
+3. ACE Copilot automatically updates calculated metrics when source metrics change
+
+### Metric Comparison Views
+
+Compare multiple metrics side-by-side:
+1. Select multiple metrics in the Navigation Panel (Ctrl+Click)
+2. Right-click and choose "Compare Metrics"
+3. Choose comparison type: overlaid charts, separate charts, or correlation analysis
+
+### Exporting Metric Data
+
+Export metric data for external analysis:
+- **CSV Export** - Raw data with timestamps and values
+- **Excel Export** - Formatted with charts and conditional formatting
+- **PDF Report** - Visual report with charts and threshold status
+- **API Access** - Programmatic access to metric values via REST API
+
+<Note>
+Exported data respects your current filter and date range selections. Adjust these before exporting to get exactly the data you need.
+</Note>
+
+## Next Steps
+
+- Learn about **Traceability Management** to link metrics to requirements and corrective actions
+- Explore **Advanced Reporting** to create executive dashboards
+- Configure **Data Integration** to connect additional corporate data sources

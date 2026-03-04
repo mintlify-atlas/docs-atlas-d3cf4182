@@ -1,0 +1,199 @@
+---
+title: Visual Metrics
+description: Create powerful visualizations to track and analyze your corporate performance metrics in real-time
+---
+
+## Overview
+
+ACE Copilot's visual metrics system transforms raw performance data into actionable insights through customizable charts, graphs, and gauges. Monitor KPIs, track trends, and identify patterns with real-time visualizations designed for corporate environments.
+
+## Visualization Types
+
+ACE Copilot supports a comprehensive range of visualization formats to match your data analysis needs:
+
+<CardGroup cols={2}>
+  <Card title="Line Charts" icon="chart-line">
+    Track trends over time with multi-series line charts. Ideal for performance metrics, revenue tracking, and comparative analysis across time periods.
+  </Card>
+  
+  <Card title="Bar & Column Charts" icon="chart-column">
+    Compare values across categories with vertical or horizontal bars. Perfect for department comparisons, quarterly results, and benchmark analysis.
+  </Card>
+  
+  <Card title="Pie & Donut Charts" icon="chart-pie">
+    Visualize proportional data and composition breakdowns. Excellent for market share, budget allocation, and resource distribution.
+  </Card>
+  
+  <Card title="Gauge Meters" icon="gauge-high">
+    Display single-value metrics against targets or ranges. Designed for KPI dashboards, performance scorecards, and goal tracking.
+  </Card>
+  
+  <Card title="Heat Maps" icon="table-cells">
+    Identify patterns and outliers through color-coded data matrices. Useful for resource utilization, geographic analysis, and correlation studies.
+  </Card>
+  
+  <Card title="Scatter Plots" icon="circle-dot">
+    Analyze relationships between variables and identify correlations. Essential for predictive modeling and regression analysis.
+  </Card>
+</CardGroup>
+
+## Creating Visualizations
+
+### Quick Start
+
+1. Navigate to **Dashboard** > **Add Visualization**
+2. Select your data source from connected databases or imported files
+3. Choose a visualization type from the gallery
+4. Configure data mappings and display settings
+5. Apply styling and save to your dashboard
+
+<Tip>
+Use the **Auto-Suggest** feature to let ACE Copilot recommend the best visualization type based on your selected data structure.
+</Tip>
+
+### Data Source Configuration
+
+ACE Copilot connects to multiple data sources simultaneously:
+
+- **SQL Databases**: Direct connection to corporate SQL Server, Oracle, or PostgreSQL databases
+- **Excel Files**: Import from .xlsx, .xls, or .csv files with automatic column detection
+- **APIs**: RESTful API integration with authentication support
+- **Manual Entry**: Direct data input for quick prototyping or small datasets
+
+## Customization Options
+
+### Visual Styling
+
+Fine-tune every aspect of your visualizations:
+
+- **Color Schemes**: Choose from 20+ preset themes or create custom palettes that match your corporate branding
+- **Fonts & Labels**: Customize axis labels, data point annotations, and legend positioning
+- **Grid & Axes**: Configure gridline density, axis scaling (linear or logarithmic), and tick intervals
+- **Animations**: Enable smooth transitions for data updates or keep visualizations static for presentations
+
+### Data Formatting
+
+- Apply number formatting (currency, percentage, decimal precision)
+- Set date/time display formats for time-series data
+- Configure data aggregation methods (sum, average, median, count)
+- Define calculated fields using built-in formula editor
+
+<Note>
+All visualizations automatically adapt to the ACE Copilot dark mode interface, ensuring optimal readability in any lighting condition.
+</Note>
+
+## Real-Time vs Historical Data
+
+### Real-Time Data Display
+
+Monitor live metrics with automatic refresh capabilities:
+
+- **Auto-Refresh Intervals**: Set update frequencies from 5 seconds to 1 hour
+- **Live Indicators**: Visual cues show when data is updating
+- **Threshold Alerts**: Automatic notifications when metrics exceed defined limits
+- **Performance Optimized**: Efficient data streaming for minimal system impact
+
+### Historical Analysis
+
+Analyze trends and patterns over extended time periods:
+
+- **Time Range Selection**: Preset ranges (today, last 7 days, month, quarter, year) or custom date pickers
+- **Comparative Views**: Overlay multiple time periods for year-over-year or period-over-period comparison
+- **Data Aggregation**: Automatically group data by hour, day, week, month, or year
+- **Snapshot Archive**: Save and retrieve historical dashboard states
+
+## Dashboard Layout
+
+### Grid System
+
+ACE Copilot uses a flexible grid-based layout engine:
+
+- Drag-and-drop visualizations to arrange your dashboard
+- Resize charts by dragging corners or edges
+- Automatic snap-to-grid alignment for clean layouts
+- Responsive sizing adapts to window dimensions
+
+### Organization Features
+
+**Tabs & Pages**: Organize related metrics into logical groupings across multiple dashboard pages
+
+**Filters Panel**: Create dashboard-wide filters that apply across all visualizations simultaneously
+
+**Layout Templates**: Start with predefined layouts (Executive Summary, Operations Monitor, Sales Dashboard) or create custom templates
+
+**Grid Density**: Choose between compact (12x12 grid) or spacious (6x6 grid) layouts
+
+### Best Practices
+
+<Info>
+**Dashboard Design Tips:**
+- Place your most critical KPIs in the top-left quadrant where eyes naturally focus first
+- Limit dashboards to 6-8 visualizations to prevent cognitive overload
+- Use consistent color coding across related metrics
+- Group related visualizations using visual proximity and whitespace
+</Info>
+
+## Interactive Features
+
+### Drill-Down Analysis
+
+Click on any data point to access detailed breakdowns:
+
+- Navigate from summary to detailed views
+- Automatic hierarchy detection (year → quarter → month → day)
+- Breadcrumb navigation to return to previous levels
+
+### Cross-Filtering
+
+Selecting data in one visualization automatically filters related charts:
+
+- Click a pie slice to filter all dashboard metrics to that category
+- Select a date range in a timeline to update all time-based visualizations
+- Enable or disable cross-filtering per visualization
+
+### Export Options
+
+Individual visualizations can be exported as:
+
+- High-resolution PNG or SVG images
+- Interactive HTML widgets
+- Raw data in CSV or Excel format
+
+## Performance Optimization
+
+For large datasets and complex dashboards:
+
+- **Data Sampling**: Automatically sample large datasets while maintaining statistical accuracy
+- **Lazy Loading**: Visualizations load only when visible in the viewport
+- **Query Caching**: Frequently accessed data is cached locally for instant display
+- **Aggregation Pre-Processing**: Pre-calculate aggregations server-side for faster rendering
+
+<Tip>
+For dashboards with more than 100,000 data points, enable **Server-Side Rendering** in visualization settings to maintain smooth performance.
+</Tip>
+
+## Use Cases
+
+### Sales Performance Tracking
+
+Create a comprehensive sales dashboard combining:
+- Line chart showing revenue trends over the past 12 months
+- Bar chart comparing sales by region or product line
+- Gauge meters displaying quota attainment percentages
+- Heat map revealing peak sales periods by day and hour
+
+### Operational Monitoring
+
+Build real-time operations dashboards featuring:
+- Live production volume metrics with 30-second refresh
+- Quality control charts tracking defect rates
+- Resource utilization heat maps across facilities
+- Alert indicators for threshold breaches
+
+### Executive Reporting
+
+Design high-level KPI dashboards with:
+- Key metrics displayed as large gauge visualizations
+- Trend indicators showing month-over-month changes
+- Comparative charts for budget vs. actual performance
+- Clean, presentation-ready layouts for boardroom display

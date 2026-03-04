@@ -1,0 +1,487 @@
+---
+title: Data Export
+description: Export metrics and reports in multiple formats with scheduling, automation, and custom templates
+---
+
+## Overview
+
+ACE Copilot's data export capabilities enable you to extract metrics, visualizations, and reports in various formats for distribution, archival, or integration with other systems. Whether you need one-time exports or automated scheduled deliveries, ACE Copilot provides flexible export options.
+
+## Supported Export Formats
+
+Export your data and dashboards in the format that best suits your needs:
+
+<Tabs>
+  <Tab title="Excel (.xlsx)">
+    **Microsoft Excel Format**
+    
+    Export data to Excel workbooks with advanced formatting:
+    
+    - **Multiple Sheets**: Each visualization exports to a separate worksheet
+    - **Formatted Tables**: Data exported with headers, borders, and cell styling
+    - **Embedded Charts**: Include visualization charts as native Excel objects
+    - **Formulas Preserved**: Calculated fields export as Excel formulas
+    - **Conditional Formatting**: Apply Excel conditional formatting rules automatically
+    
+    **Best For:**
+    - Detailed data analysis in Excel
+    - Distribution to non-ACE Copilot users
+    - Financial reporting and auditing
+    - Further manipulation and pivot table creation
+    
+    **Export Options:**
+    ```
+    Format: .xlsx (Excel 2010 and later)
+    Max Rows: 1,048,576 per sheet
+    Includes: Data, formatting, charts, formulas
+    File Size: Compressed, typically 30-50% smaller than CSV
+    ```
+  </Tab>
+  
+  <Tab title="CSV">
+    **Comma-Separated Values**
+    
+    Export raw data in universal CSV format:
+    
+    - **Plain Text**: Simple, universal format readable by any system
+    - **No Formatting**: Pure data values without styling
+    - **Single File**: One CSV per visualization or combined export
+    - **Custom Delimiters**: Choose comma, semicolon, tab, or pipe delimiter
+    - **Encoding Options**: UTF-8, UTF-16, or ASCII encoding
+    
+    **Best For:**
+    - Data warehouse imports
+    - Database bulk loading
+    - Third-party system integration
+    - Large dataset exports (millions of rows)
+    
+    **Export Options:**
+    ```
+    Format: .csv (plain text)
+    Max Rows: Unlimited (limited only by disk space)
+    Includes: Data values only, no formatting
+    File Size: Larger than Excel for same data
+    Character Encoding: UTF-8 (default), UTF-16, ASCII
+    ```
+  </Tab>
+  
+  <Tab title="PDF">
+    **Portable Document Format**
+    
+    Export dashboards as presentation-ready PDFs:
+    
+    - **High Resolution**: Vector graphics maintain quality at any zoom level
+    - **Page Layouts**: Portrait or landscape orientation, custom page sizes
+    - **Headers & Footers**: Include company logo, page numbers, timestamps
+    - **Table of Contents**: Auto-generated for multi-page reports
+    - **Hyperlinks**: Clickable links to related dashboards (in PDF readers)
+    
+    **Best For:**
+    - Executive reports and presentations
+    - Archival and record-keeping
+    - Printing hard copies
+    - Email distribution
+    
+    **Export Options:**
+    ```
+    Format: PDF/A-1b (archival standard)
+    Resolution: 300 DPI (default), up to 600 DPI
+    Includes: Visualizations, annotations, branding
+    Compression: Optimized for file size vs. quality
+    Security: Optional password protection
+    ```
+  </Tab>
+  
+  <Tab title="PowerPoint (.pptx)">
+    **Microsoft PowerPoint Presentation**
+    
+    Export dashboards as editable PowerPoint slides:
+    
+    - **One Slide Per Visualization**: Each chart becomes an editable slide
+    - **Editable Charts**: Charts export as native PowerPoint objects
+    - **Corporate Templates**: Apply your organization's PowerPoint template
+    - **Speaker Notes**: Include data source and calculation notes
+    - **Title Slides**: Auto-generated title and agenda slides
+    
+    **Best For:**
+    - Board presentations
+    - Quarterly business reviews
+    - Sales presentations
+    - Training materials
+    
+    **Export Options:**
+    ```
+    Format: .pptx (PowerPoint 2010 and later)
+    Layout: 16:9 or 4:3 aspect ratio
+    Includes: Charts, data tables, titles, notes
+    Customization: Apply custom templates and themes
+    ```
+  </Tab>
+  
+  <Tab title="JSON">
+    **JavaScript Object Notation**
+    
+    Export structured data for API and application integration:
+    
+    - **Structured Format**: Hierarchical data with proper typing
+    - **Metadata Included**: Field names, types, units, and descriptions
+    - **Nested Objects**: Preserve relationships and groupings
+    - **Array Format**: Compact or pretty-printed formatting
+    - **Schema Validation**: Optional JSON schema generation
+    
+    **Best For:**
+    - API integrations
+    - Web application data feeds
+    - Automated data pipelines
+    - Configuration exports
+    
+    **Export Options:**
+    ```
+    Format: .json (RFC 8259 compliant)
+    Encoding: UTF-8
+    Includes: Data, metadata, structure
+    Formatting: Compact or indented (pretty-print)
+    ```
+  </Tab>
+  
+  <Tab title="HTML">
+    **Interactive Web Page**
+    
+    Export dashboards as standalone HTML files:
+    
+    - **Self-Contained**: Single HTML file with embedded CSS and JavaScript
+    - **Interactive**: Filters, tooltips, and drill-down preserved
+    - **No Dependencies**: Works offline without ACE Copilot installation
+    - **Responsive Design**: Adapts to different screen sizes
+    - **Embeddable**: Can be embedded in intranets or portals
+    
+    **Best For:**
+    - Intranet publishing
+    - Offline presentations
+    - Email attachments (for interactive reports)
+    - SharePoint integration
+    
+    **Export Options:**
+    ```
+    Format: .html (HTML5)
+    Interactivity: Full or static mode
+    Includes: Visualizations, filters, tooltips
+    Size: Larger due to embedded libraries
+    ```
+  </Tab>
+</Tabs>
+
+## Quick Export
+
+For immediate, one-time exports:
+
+1. Open the dashboard or visualization you want to export
+2. Click the **Export** button in the top toolbar
+3. Select your desired format from the dropdown
+4. Configure format-specific options (page orientation, delimiter, etc.)
+5. Click **Export Now**
+6. Choose save location or email destination
+
+<Tip>
+Use the keyboard shortcut `Ctrl + E` to quickly open the export dialog from any dashboard.
+</Tip>
+
+## Scheduled Exports
+
+Automate recurring exports with flexible scheduling options:
+
+### Creating a Schedule
+
+1. Navigate to **File** > **Schedule Export**
+2. Select the dashboard or visualization to export
+3. Choose export format and options
+4. Configure schedule:
+   - **Frequency**: Daily, weekly, monthly, or custom intervals
+   - **Time**: Specific time of day (considers data refresh schedules)
+   - **Days**: Specific days of week or month
+   - **Timezone**: Local or specific timezone
+5. Set delivery method (save to folder, email, FTP)
+6. Click **Create Schedule**
+
+### Schedule Examples
+
+**Daily Morning Report**
+- Export sales dashboard to PDF
+- Every weekday at 7:00 AM
+- Email to management team
+- Include previous day's data
+
+**Weekly Operations Summary**
+- Export operations metrics to Excel
+- Every Monday at 9:00 AM
+- Save to network share: `\\server\reports\weekly\`
+- Include full previous week's data
+
+**Monthly Financial Package**
+- Export financial dashboards to PowerPoint
+- First business day of each month at 8:00 AM
+- Email to finance team and executives
+- Include month-end snapshot data
+
+**Quarterly Board Report**
+- Export executive summary to PDF
+- Last day of each quarter at 5:00 PM
+- Save to SharePoint document library
+- Apply watermark and password protection
+
+### Managing Schedules
+
+View and manage all scheduled exports from **Tools** > **Export Scheduler**:
+
+- **Active Schedules**: View all upcoming scheduled exports
+- **Execution History**: Review past export jobs and their status
+- **Enable/Disable**: Temporarily pause schedules without deleting
+- **Edit Schedule**: Modify frequency, format, or delivery options
+- **Delete Schedule**: Remove schedules no longer needed
+
+<Note>
+Scheduled exports execute even when ACE Copilot is closed, using the Windows Task Scheduler service. Ensure your computer is powered on at scheduled times or configure schedules on a dedicated server.
+</Note>
+
+## Custom Export Templates
+
+Create reusable export configurations with custom branding and formatting:
+
+### Excel Templates
+
+**Corporate Branding**
+- Custom header with company logo and report title
+- Footer with page numbers, export date, and confidentiality notice
+- Color schemes matching corporate style guide
+- Pre-configured column widths and row heights
+
+**Advanced Formatting**
+- Conditional formatting rules (highlight values above/below thresholds)
+- Data validation dropdowns for interactive filtering
+- Pivot table layouts for summarized views
+- Named ranges for easy formula referencing
+
+### PDF Templates
+
+**Report Layouts**
+- Cover page with title, date, and author
+- Executive summary page with key highlights
+- Table of contents with page numbers
+- Consistent header/footer on each page
+- Appendix for detailed data tables
+
+**Styling Options**
+- Corporate fonts and color palette
+- Page margins and padding
+- Chart sizing and positioning
+- Watermarks ("Confidential", "Draft", etc.)
+
+### Creating Templates
+
+1. Export a dashboard using standard options
+2. Open the exported file and apply your desired formatting
+3. Save the formatted file as a template
+4. In ACE Copilot, go to **Tools** > **Export Templates**
+5. Click **Import Template** and select your formatted file
+6. Name the template and set it as default (optional)
+7. Use the template in future exports by selecting it from the template dropdown
+
+<Info>
+Templates are stored in your user profile and can be exported/imported to share with colleagues. Administrators can deploy organization-wide templates that appear for all users.
+</Info>
+
+## Bulk Export Operations
+
+Export multiple dashboards or large datasets efficiently:
+
+### Multi-Dashboard Export
+
+Export several dashboards in a single operation:
+
+1. Go to **File** > **Bulk Export**
+2. Select dashboards to include (use Ctrl+Click for multiple selection)
+3. Choose export format (same format for all dashboards)
+4. Configure options:
+   - **Single File**: Combine all dashboards into one file (Excel: multiple sheets, PDF: multiple pages)
+   - **Separate Files**: Generate individual file for each dashboard
+   - **ZIP Archive**: Package all exports into a single .zip file
+5. Click **Export All**
+
+### Large Dataset Exports
+
+For datasets exceeding standard export limits:
+
+**Chunked Export**
+- Automatically split large datasets into multiple files
+- Configure maximum rows per file (e.g., 500,000 rows)
+- Files named with sequential numbers: `data_part1.csv`, `data_part2.csv`
+
+**Compressed Export**
+- Enable GZIP compression for CSV exports
+- Reduces file size by 80-90% for large datasets
+- Compatible with most data import tools
+
+**Filtered Export**
+- Apply filters to export subsets of data
+- Reduces export size and processing time
+- Useful for region-specific or date-range exports
+
+### Performance Optimization
+
+<Tip>
+For exports larger than 1 million rows, consider:
+- Scheduling during off-peak hours to minimize system impact
+- Using CSV format (faster than Excel for large volumes)
+- Enabling compression to reduce network transfer time
+- Exporting to local drives rather than network shares
+</Tip>
+
+## API Integration
+
+Integrate ACE Copilot exports into automated workflows using the REST API:
+
+### API Endpoints
+
+**Trigger Export**
+```http
+POST /api/v1/exports
+Content-Type: application/json
+Authorization: Bearer {token}
+
+{
+  "dashboard_id": "abc-123",
+  "format": "xlsx",
+  "filters": {
+    "date_range": "last_30_days",
+    "region": "North America"
+  },
+  "options": {
+    "include_charts": true,
+    "template": "corporate_template"
+  }
+}
+```
+
+**Check Export Status**
+```http
+GET /api/v1/exports/{export_id}/status
+Authorization: Bearer {token}
+```
+
+**Download Export File**
+```http
+GET /api/v1/exports/{export_id}/download
+Authorization: Bearer {token}
+```
+
+### Authentication
+
+API access requires authentication:
+
+1. Generate API token in **Settings** > **API Access**
+2. Include token in `Authorization` header as Bearer token
+3. Tokens can be scoped to specific dashboards or operations
+4. Set expiration date for security (max 1 year)
+
+### Use Cases
+
+**Automated Reporting Pipeline**
+- Trigger exports via API on custom schedule
+- Download exported files to data warehouse
+- Process and load into business intelligence system
+- Archive exports to long-term storage
+
+**Event-Driven Exports**
+- Trigger export when specific conditions are met
+- Example: Export quarterly data when quarter-end flag is set
+- Integrate with workflow automation tools (Power Automate, Zapier)
+
+**Custom Integrations**
+- Embed export functionality in custom applications
+- Allow users to request exports from external systems
+- Programmatically generate and distribute reports
+
+<Note>
+API access requires ACE Copilot Enterprise license. Contact your administrator to enable API access and generate authentication tokens.
+</Note>
+
+## Export Security
+
+### Access Controls
+
+- **Permission-Based**: Users can only export data they have permission to view
+- **Export Restrictions**: Administrators can disable exports for sensitive dashboards
+- **Audit Logging**: All export operations are logged with user, timestamp, and data scope
+- **Watermarking**: Automatically apply user ID watermarks to PDF exports for traceability
+
+### Data Protection
+
+**Encryption**
+- Password-protect PDF and Excel exports
+- Apply AES-256 encryption to exported files
+- Set read-only or print restrictions on PDF files
+
+**Data Masking**
+- Automatically mask sensitive fields (SSN, credit card numbers)
+- Redact confidential information based on user role
+- Replace actual values with anonymized data for testing environments
+
+**Compliance**
+- GDPR-compliant data export with audit trails
+- Retention policies for exported files
+- Automatic deletion of exports after specified period
+- Export disclaimers and confidentiality notices
+
+## Best Practices
+
+### Format Selection
+
+**Choose the Right Format:**
+- **Excel**: When recipients need to analyze or manipulate data
+- **CSV**: For system integrations and database imports
+- **PDF**: For formal reports, archival, and distribution
+- **PowerPoint**: For presentations and meetings
+- **JSON**: For API integrations and web applications
+- **HTML**: For intranet publishing and interactive sharing
+
+### Performance Tips
+
+- **Filter Before Export**: Apply filters to reduce data volume
+- **Schedule Large Exports**: Run overnight or during off-peak hours
+- **Use Appropriate Format**: CSV is faster than Excel for large datasets
+- **Local vs. Network**: Export to local drives first, then copy to network shares
+
+### Data Freshness
+
+<Info>
+Exports capture data at the time of execution. For scheduled exports, ensure:
+- Data sources refresh before scheduled export time
+- Allow buffer time for data processing (30-60 minutes)
+- Consider timezone differences for global teams
+</Info>
+
+### File Organization
+
+**Naming Conventions:**
+- Include dashboard name and timestamp: `Sales_Dashboard_2026-03-04.xlsx`
+- Use consistent date formats: `YYYY-MM-DD` for sortable filenames
+- Add version numbers for iterative exports: `Report_v1.2.pdf`
+
+**Storage Structure:**
+```
+\\reports\
+  ├── daily\
+  │   ├── 2026-03\
+  │   └── 2026-04\
+  ├── weekly\
+  │   └── 2026-Q1\
+  └── monthly\
+      └── 2026\
+```
+
+### Distribution
+
+- **Email Size Limits**: Keep attachments under 10 MB or use file sharing links
+- **Security**: Use secure file transfer for sensitive data
+- **Recipients**: Verify recipients have appropriate tools to open exported files
+- **Archival**: Implement retention policies to manage storage costs

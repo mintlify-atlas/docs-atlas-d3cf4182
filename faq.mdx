@@ -1,0 +1,687 @@
+---
+title: 'Frequently Asked Questions'
+description: 'Common questions about ACE Copilot features, licensing, system requirements, and support'
+---
+
+## General Questions
+
+<AccordionGroup>
+  <Accordion title="What is ACE Copilot?" icon="circle-question">
+    ACE Copilot is a Windows desktop application designed for corporate visual metrics and traceability management. It enables organizations to:
+    
+    - Track and visualize key performance indicators (KPIs)
+    - Manage traceability matrices for compliance and project management
+    - Create interactive dashboards for data-driven decision making
+    - Generate professional reports and exports
+    - Collaborate with team members on shared metrics
+    
+    ACE Copilot is particularly valuable for project managers, quality assurance teams, compliance officers, and business analysts who need to track, visualize, and report on corporate metrics.
+  </Accordion>
+
+  <Accordion title="What's new in version 2.3?" icon="star">
+    Version 2.3 introduces several significant enhancements:
+    
+    - **Enhanced Visual Corporate Metrics:** Redesigned dashboard components with improved visualization capabilities
+    - **Advanced Traceability Management:** Bi-directional linking and matrix views
+    - **Custom Metric Templates:** Save and reuse metric configurations
+    - **Real-time Collaboration:** Share live dashboards with team members
+    - **New Export Formats:** PowerPoint and interactive HTML reports
+    - **Performance Improvements:** 40% faster rendering, 25% less memory usage
+    
+    See the [Releases](/releases) page for complete changelog.
+  </Accordion>
+
+  <Accordion title="Is ACE Copilot free to use?" icon="dollar-sign">
+    ACE Copilot offers several licensing options:
+    
+    - **Community Edition:** Free for individual use with basic features
+    - **Professional:** Full-featured license for individual users
+    - **Team:** Multi-user licenses with collaboration features
+    - **Enterprise:** Organization-wide licensing with priority support
+    
+    The application can be downloaded and evaluated free for 30 days with full Professional features. After the trial period, you can continue with Community Edition features or purchase a license.
+    
+    <Note>
+      Academic and non-profit organizations may qualify for discounted licensing. Contact your license administrator for details.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Can I use ACE Copilot on multiple computers?" icon="computer">
+    License terms depend on your license type:
+    
+    - **Community Edition:** Can be used on any number of computers
+    - **Professional:** Single-user license allows installation on up to 2 computers for the same user
+    - **Team/Enterprise:** Named or concurrent user licensing depending on agreement
+    
+    Your license key can be deactivated on one machine and activated on another through Settings > License > Manage Activations.
+    
+    You cannot run ACE Copilot simultaneously on multiple machines with a single Professional license.
+  </Accordion>
+
+  <Accordion title="Does ACE Copilot work on Mac or Linux?" icon="apple">
+    Currently, ACE Copilot is available only for Windows (Windows 10 or later). 
+    
+    However, you can run ACE Copilot on Mac or Linux using:
+    - **Parallels Desktop** (Mac)
+    - **VMware Fusion** (Mac)
+    - **Wine** (Linux - experimental, not officially supported)
+    - **Windows virtual machine** on any platform
+    
+    <Warning>
+      Running ACE Copilot in virtual machines or compatibility layers is not officially supported and may result in performance issues or reduced functionality.
+    </Warning>
+    
+    Native Mac and Linux versions are under consideration for future releases based on user demand.
+  </Accordion>
+
+  <Accordion title="Where is my data stored?" icon="folder">
+    ACE Copilot stores all data locally on your computer by default:
+    
+    - **Project data:** `%AppData%\AceCopilot\Data`
+    - **Settings:** `%AppData%\AceCopilot\settings.json`
+    - **Backups:** `%AppData%\AceCopilot\Backups`
+    
+    This typically translates to: `C:\Users\[YourUsername]\AppData\Roaming\AceCopilot\`
+    
+    **Optional cloud storage:** If you enable cloud backup (Professional/Team/Enterprise only), encrypted backups are stored in your configured cloud storage provider (OneDrive, Google Drive, or Dropbox).
+    
+    You maintain full control over your data and can export projects at any time using File > Export Project.
+  </Accordion>
+</AccordionGroup>
+
+## System Requirements
+
+<AccordionGroup>
+  <Accordion title="What are the minimum system requirements?" icon="desktop">
+    **Minimum Requirements:**
+    - **Operating System:** Windows 10 (version 1809) or later
+    - **Processor:** Intel Core i3 or equivalent (2 GHz+)
+    - **RAM:** 4 GB
+    - **Storage:** 500 MB available space
+    - **Display:** 1366 x 768 resolution
+    - **.NET Framework:** 4.8 or higher
+    - **Graphics:** DirectX 11 compatible graphics card
+    
+    **Recommended for Optimal Performance:**
+    - **Operating System:** Windows 11
+    - **Processor:** Intel Core i5 or equivalent (3 GHz+)
+    - **RAM:** 8 GB or more
+    - **Storage:** 2 GB available space (SSD preferred)
+    - **Display:** 1920 x 1080 or higher resolution
+    - **Graphics:** Dedicated GPU with 2GB VRAM
+    
+    <Tip>
+      For large datasets (>10,000 records) or complex dashboards with multiple real-time visualizations, 16GB RAM and an SSD are highly recommended.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="How much disk space does ACE Copilot use?" icon="hard-drive">
+    - **Application installation:** ~300 MB
+    - **Required free space:** 500 MB (includes temporary files and cache)
+    - **Data storage:** Varies based on your projects
+      - Small projects (1,000 records): ~10 MB
+      - Medium projects (10,000 records): ~50 MB
+      - Large projects (100,000 records): ~300 MB
+    
+    Additional space is required for:
+    - Automatic backups (configurable retention)
+    - Export files (PDF, Excel, PowerPoint)
+    - Cache and temporary files
+    
+    You can configure cache size and backup retention in Settings > Performance and Settings > Backups respectively.
+  </Accordion>
+
+  <Accordion title="Does ACE Copilot require an internet connection?" icon="wifi">
+    **No**, ACE Copilot works fully offline once installed. Internet connectivity is only required for:
+    
+    - Initial license activation
+    - Checking for software updates
+    - Cloud backup/sync features (optional)
+    - API integrations with external services (optional)
+    - Sending scheduled email reports (optional)
+    - Real-time collaboration features (Team/Enterprise)
+    
+    All core functionality—creating dashboards, importing data, generating reports, and analyzing metrics—works completely offline.
+    
+    <Note>
+      If you're behind a corporate firewall or proxy, you may need to configure proxy settings in Settings > Network for online features to work.
+    </Note>
+  </Accordion>
+
+  <Accordion title="What file formats does ACE Copilot support?" icon="file">
+    **Import Formats:**
+    - CSV (UTF-8, UTF-16, ASCII)
+    - Excel (.xlsx, .xlsm)
+    - JSON
+    - XML
+    - SQL database connections (PostgreSQL, MySQL, SQL Server)
+    - REST API endpoints
+    
+    **Export Formats:**
+    - PDF (dashboards and reports)
+    - Excel (.xlsx)
+    - PowerPoint (.pptx) - new in v2.3
+    - CSV
+    - JSON
+    - Interactive HTML
+    - PNG, JPG (chart exports)
+    
+    **Project Files:**
+    - .aceproject (native ACE Copilot project format)
+    - .zip (archived projects with data)
+    
+    Maximum file size for imports: 100 MB (can be increased in Settings > Import for Professional/Enterprise licenses).
+  </Accordion>
+</AccordionGroup>
+
+## Data Security and Privacy
+
+<AccordionGroup>
+  <Accordion title="Is my data secure in ACE Copilot?" icon="lock">
+    Yes. ACE Copilot implements multiple security measures:
+    
+    - **Local storage:** All data stored on your computer by default, not on external servers
+    - **Encryption at rest:** Project files encrypted using AES-256 (Professional/Enterprise)
+    - **Encrypted backups:** Cloud backups are encrypted before upload
+    - **No telemetry:** ACE Copilot does not collect or transmit usage data or project information
+    - **Secure connections:** All API integrations use HTTPS/TLS
+    - **Access control:** Role-based permissions for Team/Enterprise (RBAC)
+    - **Audit trail:** All changes logged for compliance (Enterprise)
+    
+    <Warning>
+      While ACE Copilot provides strong security features, you are responsible for protecting your computer with passwords, encryption, and physical security.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Does ACE Copilot collect any personal information?" icon="user-secret">
+    **No.** ACE Copilot respects your privacy:
+    
+    - No analytics or telemetry data collected
+    - No personal information transmitted to developers
+    - No tracking of usage patterns or behavior
+    - License activation only transmits license key and machine ID (anonymized hardware hash)
+    
+    **Optional data transmission** only occurs when you explicitly:
+    - Check for updates (transmits version number)
+    - Report bugs via Help > Report Issue (only information you provide)
+    - Enable cloud backup (only to your configured cloud provider)
+    - Use API integrations (only to services you configure)
+    
+    You can disable all network communication in Settings > Privacy > Offline Mode.
+  </Accordion>
+
+  <Accordion title="Can I use ACE Copilot with sensitive corporate data?" icon="shield-halved">
+    **Yes.** ACE Copilot is designed for corporate use with sensitive data:
+    
+    - Fully offline operation supported
+    - Data never leaves your infrastructure
+    - Encryption at rest and in transit
+    - Compliance features for regulated industries
+    - Audit trail for data access (Enterprise)
+    - No cloud dependencies for core functionality
+    
+    Many organizations in regulated industries (healthcare, finance, government) use ACE Copilot for compliance and quality metrics.
+    
+    **Best practices for sensitive data:**
+    - Enable disk encryption (Windows BitLocker)
+    - Use Enterprise edition with encryption at rest
+    - Disable cloud backup or use organization-approved storage
+    - Configure network policies to restrict API access
+    - Enable audit logging
+    - Train users on data handling policies
+    
+    <Tip>
+      Enterprise customers can request security documentation including SOC 2 compliance information through their license administrator.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="What happens to my data if my license expires?" icon="calendar-xmark">
+    **Your data remains accessible**, but with limitations:
+    
+    - **Community Edition features:** Continue to work indefinitely
+    - **Professional features:** Become view-only (can view but not edit dashboards)
+    - **Your project files:** Remain on your computer and can be exported
+    - **No data loss:** All your data is preserved
+    
+    You can:
+    - View existing dashboards and reports
+    - Export data to CSV, Excel, or PDF
+    - Renew license to restore full functionality
+    
+    **Note:** Scheduled reports, API integrations, and cloud sync stop working after license expiration but can be re-enabled upon renewal.
+    
+    <Note>
+      Grace period: You have 30 days after license expiration to renew without losing any collaboration or cloud data.
+    </Note>
+  </Accordion>
+</AccordionGroup>
+
+## Integration and Compatibility
+
+<AccordionGroup>
+  <Accordion title="Can ACE Copilot integrate with other tools?" icon="puzzle-piece">
+    **Yes.** ACE Copilot offers several integration options:
+    
+    **Direct Integrations (Professional/Enterprise):**
+    - Microsoft Excel (import/export)
+    - SQL databases (PostgreSQL, MySQL, SQL Server, Oracle)
+    - REST APIs (custom endpoints)
+    - JIRA (issue tracking integration)
+    - Azure DevOps
+    - ServiceNow
+    
+    **File-based Integration:**
+    - Import CSV/Excel from any source
+    - Export to standard formats for use in other tools
+    - Scheduled exports to shared folders
+    
+    **API Access (Enterprise):**
+    - REST API for programmatic access to ACE Copilot data
+    - Webhook support for real-time notifications
+    - PowerShell cmdlets for automation
+    
+    ACE Copilot supports connecting to various corporate data sources. See the [User Guide](/guide/overview) for detailed setup instructions.
+  </Accordion>
+
+  <Accordion title="Can I automate ACE Copilot tasks?" icon="robot">
+    **Yes**, several automation options are available:
+    
+    **Built-in Automation:**
+    - Scheduled reports (daily, weekly, monthly)
+    - Automatic data refresh from SQL/API sources
+    - Scheduled exports to file shares
+    - Email delivery of reports
+    
+    **Command-line Interface (Professional/Enterprise):**
+    ```bash
+    AceCopilot.exe --project "MyProject.aceproject" --export-pdf "report.pdf"
+    ```
+    
+    **PowerShell Integration (Enterprise):**
+    ```powershell
+    Import-Module ACECopilot
+    Open-ACEProject -Path "C:\Projects\Metrics.aceproject"
+    Export-ACEDashboard -Name "KPIs" -Format PDF -Output "C:\Reports"
+    ```
+    
+    **Windows Task Scheduler:**
+    - Schedule ACE Copilot tasks to run unattended
+    - Generate reports overnight
+    - Automate data synchronization
+    
+    See the [Data Export](/features/data-export) guide for detailed examples on automating exports.
+  </Accordion>
+
+  <Accordion title="Does ACE Copilot work with Excel macros or Power BI?" icon="chart-column">
+    **Excel:**
+    - ACE Copilot can import Excel files including those with macros
+    - Macros are not executed during import (data only)
+    - Export to Excel creates macro-free .xlsx files
+    - You can run Excel macros on exported ACE Copilot data
+    
+    **Power BI:**
+    - Not directly integrated, but you can:
+      - Export ACE Copilot data to Excel/CSV and import into Power BI
+      - Connect Power BI to the same SQL databases as ACE Copilot
+      - Use ACE Copilot REST API (Enterprise) as Power BI data source
+    
+    **Complementary use:**
+    Many organizations use ACE Copilot for detailed traceability and operational metrics, while using Power BI for executive dashboards and organization-wide reporting.
+    
+    <Tip>
+      For regular Power BI integration, set up scheduled exports from ACE Copilot to a shared folder, then configure Power BI to import from that folder.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Can multiple users work on the same project?" icon="users">
+    **Yes**, with Team or Enterprise licenses:
+    
+    **Real-time Collaboration (v2.3+):**
+    - Multiple users can view the same dashboard simultaneously
+    - Live updates as data changes
+    - User presence indicators
+    - Role-based access control
+    
+    **Project Sharing Methods:**
+    
+    1. **Cloud Sync (Team/Enterprise):**
+       - Project stored in OneDrive, SharePoint, or Google Drive
+       - Automatic conflict resolution
+       - Version history
+    
+    2. **Network Share:**
+       - Place .aceproject file on network drive
+       - Users open from shared location
+       - File locking prevents conflicts
+    
+    3. **Centralized Server (Enterprise):**
+       - ACE Copilot Server hosts projects
+       - Web-based dashboard viewing
+       - Multi-user concurrent editing
+    
+    **Permissions (Team/Enterprise):**
+    - View only
+    - Edit dashboards
+    - Manage data
+    - Administrator
+    
+    <Warning>
+      Community and Professional editions do not support concurrent multi-user access. Projects must be shared sequentially or upgraded to Team edition.
+    </Warning>
+  </Accordion>
+</AccordionGroup>
+
+## Support and Resources
+
+<AccordionGroup>
+  <Accordion title="How do I get help if I have a problem?" icon="circle-question">
+    Several support resources are available:
+    
+    **Documentation:**
+    - This documentation site (comprehensive guides and references)
+    - Built-in help: Press F1 in any screen for context-sensitive help
+    - Video tutorials: Available on GitHub wiki
+    
+    **Community Support:**
+    - GitHub Discussions: Ask questions and share tips
+    - GitHub Issues: Report bugs and request features
+    - User forums: Community-driven support
+    
+    **Official Support:**
+    - **Community Edition:** GitHub Issues only
+    - **Professional:** Email support (48-hour response)
+    - **Team:** Email support (24-hour response)
+    - **Enterprise:** Priority support with SLA (4-hour response)
+    
+    **Before contacting support:**
+    1. Check the [Troubleshooting](/troubleshooting) guide
+    2. Search existing GitHub Issues
+    3. Generate diagnostic report (Help > Generate Diagnostic Report)
+    4. Include diagnostic report with support request
+    
+    <Tip>
+      The fastest way to get help is to search this documentation. Use the search bar at the top of the page.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="How do I report a bug or request a feature?" icon="bug">
+    **Bug Reports:**
+    
+    <Steps>
+      <Step title="Search Existing Issues">
+        Check [GitHub Issues](https://github.com/alfonsovelardem/ace-copilot/issues) to see if already reported
+      </Step>
+      <Step title="Generate Diagnostic Report">
+        Help > Generate Diagnostic Report (saves to Desktop)
+      </Step>
+      <Step title="Create New Issue">
+        Open new issue on GitHub with "Bug" label
+      </Step>
+      <Step title="Provide Details">
+        Include:
+        - ACE Copilot version
+        - Windows version
+        - Steps to reproduce
+        - Expected vs actual behavior
+        - Diagnostic report (if no sensitive data)
+        - Screenshots if applicable
+      </Step>
+    </Steps>
+    
+    **Feature Requests:**
+    
+    1. Check [existing feature requests](https://github.com/alfonsovelardem/ace-copilot/issues?q=is%3Aissue+label%3Aenhancement)
+    2. Upvote existing requests that match your needs
+    3. Create new issue with "Enhancement" label
+    4. Describe the use case and desired functionality
+    
+    <Note>
+      Enterprise customers can request custom features and prioritized development through their support agreement.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Is there a user community or forum?" icon="comments">
+    **Yes**, several community channels are available:
+    
+    **GitHub Discussions:**
+    - Q&A forum
+    - Share tips and best practices
+    - Showcase your dashboards
+    - Feature discussions
+    
+    **GitHub Repository:**
+    - [github.com/alfonsovelardem/ace-copilot](https://github.com/alfonsovelardem/ace-copilot)
+    - Issue tracking
+    - Release announcements
+    - Documentation contributions
+    
+    **Community Resources:**
+    - User-contributed templates and examples
+    - Third-party tutorials and guides
+    - Integration scripts and tools
+    
+    **Social Media:**
+    - Follow updates and announcements
+    - Share your success stories
+    - Connect with other users
+    
+    We encourage users to share knowledge, help each other, and contribute to making ACE Copilot better for everyone.
+  </Accordion>
+
+  <Accordion title="Can I contribute to ACE Copilot development?" icon="code">
+    **Yes!** Community contributions are welcome:
+    
+    **Ways to Contribute:**
+    
+    1. **Bug Reports:** Help identify and document issues
+    2. **Feature Requests:** Suggest improvements
+    3. **Documentation:** Improve guides and tutorials
+    4. **Templates:** Share dashboard templates
+    5. **Code:** Submit pull requests (if repository accepts contributions)
+    6. **Translations:** Help localize ACE Copilot
+    7. **Community Support:** Help other users in discussions
+    
+    **Contributing Code:**
+    - Review contribution guidelines on GitHub
+    - Fork the repository
+    - Create feature branch
+    - Submit pull request with clear description
+    - Ensure code follows project standards
+    
+    **Contributing Documentation:**
+    - This documentation is open source
+    - Submit improvements via pull request
+    - Help translate documentation to other languages
+    
+    All contributors are acknowledged in release notes and documentation.
+    
+    <Tip>
+      Start small! Even fixing typos in documentation or improving error messages are valuable contributions.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Where can I find training materials?" icon="graduation-cap">
+    **Free Resources:**
+    
+    - **Documentation:** Comprehensive guides on this site
+    - **Quick Start Guide:** [Getting Started](/quickstart)
+    - **Video Tutorials:** GitHub wiki and YouTube
+    - **Sample Projects:** File > Open Sample Projects
+    - **Templates:** Built-in dashboard templates
+    
+    **Self-Paced Learning:**
+    - Work through tutorials in order
+    - Use sample data to practice
+    - Experiment with different chart types
+    - Build a test project with your own data
+    
+    **Enterprise Training:**
+    - Live virtual training sessions
+    - On-site training available
+    - Custom training for your use cases
+    - Train-the-trainer programs
+    - Certification programs
+    
+    **Community Learning:**
+    - User-contributed tutorials
+    - Community webinars
+    - Best practices guides
+    - Real-world examples from other users
+    
+    <Note>
+      Enterprise customers receive complimentary training sessions as part of their support agreement. Contact your account manager for details.
+    </Note>
+  </Accordion>
+</AccordionGroup>
+
+## Licensing and Purchasing
+
+<AccordionGroup>
+  <Accordion title="How do I purchase a license?" icon="cart-shopping">
+    **Purchasing Options:**
+    
+    1. **Direct Purchase:**
+       - Visit the official website
+       - Choose license type (Professional, Team, Enterprise)
+       - Complete purchase online
+       - Receive license key via email
+    
+    2. **Volume Licensing (Team/Enterprise):**
+       - Contact sales team for quote
+       - Custom pricing for 10+ users
+       - Annual or multi-year agreements
+       - Purchase orders accepted
+    
+    3. **Resellers:**
+       - Purchase through authorized resellers
+       - Regional support available
+       - Local currency and invoicing
+    
+    **Payment Methods:**
+    - Credit card (Visa, MasterCard, Amex)
+    - PayPal
+    - Wire transfer (Enterprise)
+    - Purchase orders (Enterprise)
+    
+    **After Purchase:**
+    - License key sent to email within minutes
+    - Activate in ACE Copilot: Help > Enter License Key
+    - Invoice and receipt for accounting
+    
+    <Tip>
+      Academic institutions and non-profits may qualify for educational discounts. Contact sales with proof of eligibility.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="What is your refund policy?" icon="money-bill-wave">
+    **30-Day Money-Back Guarantee:**
+    
+    - Full refund within 30 days of purchase
+    - No questions asked
+    - Professional and Team licenses only
+    - Contact support with order number
+    
+    **Conditions:**
+    - Must be first-time purchase (not renewal)
+    - Refund to original payment method
+    - Processing time: 5-10 business days
+    - Enterprise agreements have custom terms
+    
+    **After 30 Days:**
+    - No refunds for unused time
+    - Can downgrade at next renewal
+    - Can cancel auto-renewal anytime
+    
+    We offer a full-featured 30-day trial before purchase, so you can evaluate ACE Copilot risk-free.
+  </Accordion>
+
+  <Accordion title="How do license renewals work?" icon="rotate">
+    **Subscription Licensing:**
+    
+    - Licenses are annual subscriptions
+    - Auto-renewal enabled by default (can be disabled)
+    - Renewal reminder emails sent 30, 14, and 7 days before expiration
+    - Same price for renewals (unless pricing changes)
+    
+    **Renewal Process:**
+    
+    <Steps>
+      <Step title="Renewal Notification">
+        Receive email reminder before expiration
+      </Step>
+      <Step title="Automatic Renewal">
+        If auto-renewal enabled, charged automatically to payment method on file
+      </Step>
+      <Step title="Manual Renewal">
+        If auto-renewal disabled, use renewal link in email to renew manually
+      </Step>
+      <Step title="License Updated">
+        ACE Copilot automatically detects renewal (no re-entry needed)
+      </Step>
+    </Steps>
+    
+    **Grace Period:**
+    - 14-day grace period after expiration
+    - Full features continue to work
+    - Renewal without loss of service
+    
+    **Managing Renewals:**
+    - Settings > License > Manage Subscription
+    - Enable/disable auto-renewal
+    - Update payment method
+    - View renewal date
+    
+    <Warning>
+      After grace period expires, Professional features become view-only. Renew promptly to avoid disruption.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Can I upgrade or downgrade my license?" icon="arrow-up-arrow-down">
+    **Yes**, you can change license tiers at any time:
+    
+    **Upgrading (Community → Professional → Team → Enterprise):**
+    - Immediate upgrade available
+    - Pay pro-rated difference for current period
+    - All features activated immediately
+    - Settings > License > Upgrade
+    
+    **Downgrading:**
+    - Takes effect at next renewal date
+    - Downgrade scheduled in advance
+    - No refund for current period
+    - Features remain active until renewal
+    
+    **Feature Changes:**
+    
+    When downgrading, some features become unavailable:
+    - Collaboration features (Team → Professional)
+    - Cloud sync may be disabled
+    - Advanced integrations
+    - API access
+    
+    Your data is never lost during license changes, but some functionality may become view-only.
+    
+    <Note>
+      Team and Enterprise downgrades may require contacting support to ensure proper user removal and data handling.
+    </Note>
+  </Accordion>
+</AccordionGroup>
+
+## Still Have Questions?
+
+If you didn't find the answer you were looking for:
+
+<CardGroup cols={2}>
+  <Card title="Search Documentation" icon="magnifying-glass">
+    Use the search bar at the top of this page to find specific topics
+  </Card>
+  <Card title="Troubleshooting Guide" icon="wrench" href="/troubleshooting">
+    Common technical issues and solutions
+  </Card>
+  <Card title="GitHub Discussions" icon="github" href="https://github.com/alfonsovelardem/ace-copilot/discussions">
+    Ask the community and ACE Copilot developers
+  </Card>
+  <Card title="Report an Issue" icon="bug" href="https://github.com/alfonsovelardem/ace-copilot/issues">
+    Report bugs or request new features
+  </Card>
+</CardGroup>

@@ -1,0 +1,352 @@
+---
+title: Corporate Dashboard
+description: Enterprise-grade dashboard capabilities with multi-user collaboration, role-based access, and corporate data integration
+---
+
+## Overview
+
+ACE Copilot's Corporate Dashboard feature provides enterprise teams with centralized performance monitoring, collaborative analytics, and secure data governance. Built for organizations that need to share insights across departments while maintaining granular access controls.
+
+## Enterprise Capabilities
+
+### Centralized Dashboard Hub
+
+The corporate dashboard serves as your organization's single source of truth for performance metrics:
+
+- **Unified Data View**: Aggregate metrics from multiple departments, systems, and data sources into cohesive dashboards
+- **Standardized KPIs**: Ensure consistent metric definitions and calculations across the entire organization
+- **Version Control**: Track dashboard changes with automatic versioning and rollback capabilities
+- **Dashboard Library**: Browse and deploy pre-built dashboards shared by other teams
+
+### Multi-User Collaboration
+
+Teams can work together on dashboards in real-time:
+
+- **Simultaneous Editing**: Multiple users can modify different dashboard sections concurrently
+- **Change Notifications**: Receive alerts when colleagues update shared dashboards
+- **Comments & Annotations**: Add contextual notes to specific visualizations or data points
+- **Activity Log**: Review complete audit trail of all dashboard modifications
+
+<Info>
+Collaboration features require ACE Copilot Enterprise license. Contact your administrator to verify your organization's license level.
+</Info>
+
+## Creating a Corporate Dashboard
+
+Follow this workflow to build and deploy enterprise dashboards:
+
+<Steps>
+  <Step title="Define Dashboard Scope">
+    Determine the dashboard's purpose, target audience, and key metrics. Consult with stakeholders to identify critical KPIs and reporting requirements.
+    
+    **Considerations:**
+    - Who will view this dashboard? (Executives, managers, analysts)
+    - What decisions will this dashboard inform?
+    - How frequently will data update? (Real-time, daily, weekly)
+    - What data sources are required?
+  </Step>
+  
+  <Step title="Select Dashboard Template">
+    Navigate to **File** > **New Corporate Dashboard** and choose a template:
+    
+    - **Executive Summary**: High-level KPIs with trend indicators
+    - **Departmental Performance**: Comparative metrics across teams
+    - **Operations Monitor**: Real-time operational metrics
+    - **Financial Dashboard**: Revenue, expenses, and profitability metrics
+    - **Custom Layout**: Start with a blank canvas
+  </Step>
+  
+  <Step title="Connect Data Sources">
+    Link the dashboard to your corporate data systems:
+    
+    1. Click **Data Sources** in the left sidebar
+    2. Select **Add Corporate Connection**
+    3. Choose from approved enterprise data sources
+    4. Configure connection credentials (uses Windows SSO when available)
+    5. Test connection and verify data access
+    
+    <Note>
+    Corporate data sources must be pre-configured by your IT administrator. Contact your ACE Copilot admin to request new data source connections.
+    </Note>
+  </Step>
+  
+  <Step title="Build Visualizations">
+    Add and configure visualizations for each key metric:
+    
+    - Drag visualization components from the toolbar onto the canvas
+    - Map data fields to chart axes and values
+    - Apply corporate branding (colors, fonts, logos)
+    - Configure drill-down paths and interactive filters
+  </Step>
+  
+  <Step title="Configure Access Controls">
+    Define who can view and edit the dashboard:
+    
+    1. Click **Settings** > **Permissions**
+    2. Set base permission level (View Only, Edit, Admin)
+    3. Add specific users, groups, or departments
+    4. Configure row-level security if needed
+    5. Enable or disable download/export capabilities per user group
+  </Step>
+  
+  <Step title="Test and Validate">
+    Review the dashboard with stakeholders before full deployment:
+    
+    - Verify all data calculations and aggregations
+    - Test with different user roles to confirm access controls
+    - Check performance with expected data volumes
+    - Validate on different screen sizes and resolutions
+  </Step>
+  
+  <Step title="Publish and Deploy">
+    Make the dashboard available to your organization:
+    
+    1. Click **Publish** in the top toolbar
+    2. Choose publishing scope (specific teams or organization-wide)
+    3. Set dashboard category for easier discovery
+    4. Configure notification settings for dashboard subscribers
+    5. Optionally pin to users' home screens for quick access
+  </Step>
+</Steps>
+
+## Role-Based Access Control
+
+### Permission Levels
+
+ACE Copilot supports four primary permission levels:
+
+**Viewer**
+- View dashboard and interact with filters
+- Export data (if enabled by admin)
+- Subscribe to scheduled reports
+- Cannot modify dashboard structure or settings
+
+**Editor**
+- All Viewer permissions
+- Modify visualizations and layout
+- Add or remove data sources
+- Cannot change permissions or delete dashboard
+
+**Owner**
+- All Editor permissions
+- Manage user access and permissions
+- Delete or archive dashboard
+- Transfer ownership to another user
+
+**Admin**
+- Organization-wide access to all dashboards
+- Configure corporate data sources
+- Manage user groups and roles
+- Access audit logs and usage analytics
+
+### Row-Level Security
+
+Implement fine-grained data access controls:
+
+- **Department Filtering**: Users automatically see only data from their department
+- **Geographic Restrictions**: Limit data visibility by region or location
+- **Hierarchical Access**: Managers see their team's data plus subordinate teams
+- **Custom Rules**: Define SQL-based filters using user attributes
+
+<Tip>
+Row-level security is applied at the data source level, ensuring users cannot bypass restrictions even when exporting data or using drill-down features.
+</Tip>
+
+## Dashboard Templates and Presets
+
+### Built-In Templates
+
+ACE Copilot includes 15+ professionally designed templates:
+
+**Sales & Marketing**
+- Sales Pipeline Dashboard
+- Marketing Campaign Performance
+- Customer Acquisition Metrics
+- Lead Conversion Funnel
+
+**Operations & Production**
+- Manufacturing Operations
+- Supply Chain Monitoring
+- Quality Control Dashboard
+- Inventory Management
+
+**Finance & Accounting**
+- P&L Dashboard
+- Cash Flow Analysis
+- Budget vs. Actual Tracking
+- Expense Management
+
+**Human Resources**
+- Workforce Analytics
+- Recruitment Metrics
+- Employee Performance
+- Attrition Analysis
+
+### Creating Custom Templates
+
+Save your dashboards as reusable templates:
+
+1. Build and refine your dashboard design
+2. Click **File** > **Save as Template**
+3. Remove sensitive data or use sample data
+4. Add template description and preview image
+5. Choose sharing scope (personal, team, or organization)
+
+<Note>
+Templates preserve layout, styling, and visualization configurations but not actual data or data source credentials.
+</Note>
+
+## Sharing and Presentation Mode
+
+### Sharing Options
+
+**Internal Sharing**
+- Share via email with automatic access provisioning
+- Generate shareable links with expiration dates
+- Embed dashboards in internal portals or SharePoint
+- Schedule automatic email distribution with PDF snapshots
+
+**External Sharing**
+- Create read-only public links with password protection
+- Export as standalone HTML files for offline viewing
+- Generate PDF reports with data snapshots
+- Watermark external shares with company branding
+
+### Presentation Mode
+
+Optimize dashboards for meetings and presentations:
+
+- **Full-Screen Mode**: Hide all toolbars and navigation for distraction-free display
+- **Auto-Rotate**: Cycle through multiple dashboard pages automatically
+- **Laser Pointer**: Highlight specific metrics during presentations
+- **Annotation Mode**: Draw temporary marks and notes on live dashboards
+- **Freeze Data**: Lock dashboard to specific timestamp for consistent discussion
+
+**Keyboard Shortcuts in Presentation Mode:**
+- `F11` - Toggle full-screen
+- `Space` - Pause/resume auto-rotate
+- `Ctrl + L` - Enable laser pointer
+- `Ctrl + A` - Enable annotation mode
+- `Esc` - Exit presentation mode
+
+## Corporate Data Source Integration
+
+### Supported Enterprise Systems
+
+ACE Copilot connects directly to common corporate platforms:
+
+**Databases**
+- Microsoft SQL Server (2012 and later)
+- Oracle Database (11g and later)
+- PostgreSQL (9.6 and later)
+- MySQL/MariaDB
+
+**Business Applications**
+- SAP ERP systems via SAP HANA
+- Microsoft Dynamics 365
+- Salesforce (via REST API)
+- Oracle E-Business Suite
+
+**File Systems**
+- Network shared drives (SMB/CIFS)
+- SharePoint document libraries
+- OneDrive for Business
+- Local file import (Excel, CSV)
+
+**Cloud Platforms**
+- Azure SQL Database
+- Amazon RDS
+- Google Cloud SQL
+- Snowflake Data Warehouse
+
+### Connection Security
+
+- **Windows Authentication**: Seamless SSO using Active Directory credentials
+- **Encrypted Connections**: All data transfers use TLS 1.2 or higher
+- **Credential Vault**: Securely store database credentials with AES-256 encryption
+- **Connection Auditing**: Log all data access for compliance requirements
+
+### Data Refresh Strategies
+
+**Real-Time Refresh**
+- Direct query execution on source systems
+- Suitable for small datasets (< 10,000 rows)
+- No data caching, always shows current values
+
+**Scheduled Refresh**
+- Extract data on defined schedule (hourly, daily, weekly)
+- Optimal for large datasets or complex queries
+- Reduces load on source systems
+- Configure during off-peak hours
+
+**Hybrid Mode**
+- Cache historical data locally
+- Query real-time for recent data (last 24-48 hours)
+- Balances performance with data freshness
+
+<Info>
+Corporate IT administrators can enforce refresh policies to prevent excessive load on production databases. Contact your admin if you need to adjust refresh frequencies.
+</Info>
+
+## Collaboration Features
+
+### Dashboard Comments
+
+Facilitate discussion around data insights:
+
+- Attach comments to specific visualizations or data points
+- Mention colleagues using @username to notify them
+- Thread conversations for organized discussions
+- Mark comments as resolved when issues are addressed
+- Export comment history for documentation
+
+### Shared Filters
+
+Create synchronized views across teams:
+
+- Apply filters that persist for all dashboard users
+- Save named filter sets (e.g., "Q4 2025", "North Region")
+- Allow users to temporarily override shared filters
+- Reset to default filter state with one click
+
+### Subscription Management
+
+Keep stakeholders informed automatically:
+
+- Subscribe users to dashboard update notifications
+- Configure delivery frequency (daily, weekly, monthly)
+- Include data snapshots or just change summaries
+- Conditional alerts when metrics breach thresholds
+
+## Governance and Compliance
+
+### Audit Trail
+
+Complete tracking of all dashboard activities:
+
+- User access logs (who viewed what and when)
+- Modification history (all changes to dashboard structure)
+- Data export tracking (what data was downloaded)
+- Permission changes (access grants and revocations)
+
+### Data Lineage
+
+Understand data flow from source to visualization:
+
+- View all transformations applied to data
+- Trace metrics back to original source tables
+- Document calculation formulas and business logic
+- Verify data quality and accuracy
+
+### Certification Program
+
+Designate trusted, validated dashboards:
+
+- Admin-approved dashboards receive certification badge
+- Certification indicates data accuracy verification
+- Prioritize certified dashboards in search results
+- Require periodic re-certification for continued badge
+
+<Tip>
+Request dashboard certification from your ACE Copilot administrator once you've validated data accuracy with business owners and completed user acceptance testing.
+</Tip>

@@ -1,0 +1,585 @@
+---
+title: Traceability Management
+description: Set up comprehensive traceability tracking, create relationships between items, generate compliance reports, and manage audit requirements in ACE Copilot
+---
+
+# Traceability Management
+
+Traceability in ACE Copilot enables you to create and manage relationships between requirements, design elements, test cases, issues, and other project artifacts. This comprehensive tracking supports compliance, impact analysis, and audit requirements.
+
+## What is Traceability in ACE Copilot
+
+Traceability is the ability to track relationships and dependencies between different items throughout your project lifecycle. It answers critical questions:
+
+- Which requirements are covered by which test cases?
+- What design elements implement specific requirements?
+- Which metrics measure compliance with particular requirements?
+- What is the impact if a requirement changes?
+- Are all regulatory requirements properly addressed?
+
+### Traceability Item Types
+
+ACE Copilot supports tracking these item types:
+
+- **Requirements** - Business, functional, technical, or regulatory requirements
+- **Design Elements** - Architecture components, modules, or specifications
+- **Test Cases** - Verification and validation tests
+- **Issues/Defects** - Problems found during testing or production
+- **Metrics** - Measurements tracking compliance or performance
+- **Documents** - Specifications, plans, or reports
+- **Custom Items** - User-defined item types for your specific needs
+
+<Note>
+Traceability items can be created within ACE Copilot or imported from external systems like Jira, Azure DevOps, or requirements management tools.
+</Note>
+
+### Link Types
+
+Different relationship types help categorize connections:
+
+- **Satisfies** - A test case satisfies a requirement
+- **Implements** - A design element implements a requirement
+- **Derives From** - A requirement derives from a higher-level requirement
+- **Depends On** - An item depends on another item
+- **Verifies** - A test verifies a design element
+- **Measures** - A metric measures requirement compliance
+- **Related To** - General relationship without specific semantics
+- **Custom** - User-defined relationship types
+
+## Setting Up Traceability Tracking
+
+Follow these steps to establish traceability in your project:
+
+<Steps>
+
+<Step title="Enable Traceability for Your Project">
+If starting a new project:
+1. Go to File > New Project
+2. Select "Traceability Project" or "Combined Project" (metrics + traceability)
+3. Choose a project template or start blank
+
+For existing projects:
+1. Go to Tools > Project Settings
+2. Enable "Traceability Tracking"
+3. Configure which item types you need
+</Step>
+
+<Step title="Define Your Item Types">
+Customize item types for your organization:
+1. Navigate to Tools > Traceability Configuration
+2. Review default item types (Requirements, Test Cases, etc.)
+3. Add custom types if needed (click "Add Item Type")
+4. For each type, configure:
+   - Display name and icon
+   - Required fields (ID, title, description, status, owner)
+   - Custom fields specific to this type
+   - Allowed link types for this item type
+</Step>
+
+<Step title="Import or Create Items">
+**Option A - Import from External System:**
+1. Go to File > Import > Traceability Items
+2. Select source system (Jira, Azure DevOps, CSV, Excel)
+3. Configure connection and field mapping
+4. Import items
+
+**Option B - Create Items Manually:**
+1. Open View > Traceability Matrix or press Ctrl+T
+2. Click "New Item" and select item type
+3. Fill in required fields and save
+</Step>
+
+<Step title="Establish Naming Conventions">
+Define consistent ID formats:
+- Requirements: REQ-001, REQ-002, etc.
+- Test Cases: TC-001, TC-002, etc.
+- Design Elements: DES-001, DES-002, etc.
+
+Configure ID patterns in Tools > Traceability Configuration > ID Formatting.
+</Step>
+
+<Step title="Set Up Synchronization (Optional)">
+If integrating with external systems:
+1. Go to Tools > Sync Settings > Traceability Sync
+2. Enable "Auto-sync with external systems"
+3. Set sync frequency and conflict resolution rules
+4. Test the synchronization
+</Step>
+
+</Steps>
+
+<Warning>
+Before importing large datasets, create a project backup. Import errors or incorrect field mappings can be difficult to undo without a backup.
+</Warning>
+
+## Linking Items and Creating Relationships
+
+Once items exist in your project, create relationships between them:
+
+### Creating Links Manually
+
+<Steps>
+
+<Step title="Select Source Item">
+In the Traceability view, select the item you want to link from (e.g., a requirement).
+</Step>
+
+<Step title="Open Link Dialog">
+Right-click and select "Create Link" or click the "Link" button in the toolbar.
+</Step>
+
+<Step title="Choose Target Item">
+Select the item you want to link to:
+- Use the search box to find items by ID or title
+- Filter by item type
+- Browse the item tree
+</Step>
+
+<Step title="Select Link Type">
+Choose the appropriate relationship type (e.g., "Satisfies", "Implements", "Verifies").
+</Step>
+
+<Step title="Add Link Rationale (Optional)">
+Document why this link exists or any important context. This appears when hovering over the link.
+</Step>
+
+<Step title="Save the Link">
+Click "Create Link". The relationship now appears in the traceability matrix.
+</Step>
+
+</Steps>
+
+### Bulk Link Creation
+
+For creating many links at once:
+
+1. Select multiple items in the Navigation Panel (Ctrl+Click or Shift+Click)
+2. Right-click and choose "Bulk Link"
+3. Choose the common target item or pattern
+4. Select link type
+5. Review the links to be created
+6. Click "Create All Links"
+
+<Tip>
+Use bulk linking when you have a one-to-many relationship, such as linking multiple test cases to a single requirement, or multiple requirements to a regulatory standard.
+</Tip>
+
+### Link Validation Rules
+
+Configure rules to ensure traceability integrity:
+
+1. Go to Tools > Traceability Configuration > Validation Rules
+2. Set up rules such as:
+   - "All requirements must have at least one test case"
+   - "Critical requirements must have at least two test cases"
+   - "Test cases cannot link to deprecated requirements"
+   - "Design elements must link to at least one requirement"
+
+3. Run validation via Tools > Validate Traceability
+4. Review violations and take corrective action
+
+<Note>
+Validation rules can be enforced (preventing invalid links) or advisory (showing warnings). Start with advisory rules and move to enforcement once your team is comfortable with the process.
+</Note>
+
+## Viewing Traceability Reports
+
+ACE Copilot provides multiple views for analyzing traceability relationships:
+
+<Tabs>
+
+<Tab title="Matrix View">
+
+### Traceability Matrix
+
+The matrix view shows relationships in a grid format:
+
+**How to Use:**
+1. Navigate to View > Traceability Matrix
+2. Choose which item types to display:
+   - Rows: Source item type (e.g., Requirements)
+   - Columns: Target item type (e.g., Test Cases)
+3. The grid shows links at intersections:
+   - Green checkmark: Link exists
+   - Empty cell: No link
+   - Yellow warning: Incomplete coverage
+   - Red X: Validation rule violation
+
+**Matrix Features:**
+- Click any cell to see link details or create a new link
+- Right-click column/row headers to filter or sort
+- Export to Excel for offline analysis
+- Color-code cells based on link type or item status
+
+**Use Cases:**
+- Verify all requirements have test coverage
+- Identify orphaned items (no links)
+- Review completeness of relationships
+- Present traceability status to auditors
+
+<Tip>
+Filter the matrix to show only items with incomplete coverage by clicking the filter icon and selecting "Show only incomplete items". This highlights gaps in your traceability.
+</Tip>
+
+</Tab>
+
+<Tab title="Graph View">
+
+### Traceability Graph
+
+The graph view visualizes relationships as a network diagram:
+
+**How to Use:**
+1. Navigate to View > Traceability Graph
+2. Select a starting item (e.g., a specific requirement)
+3. Choose depth:
+   - **1 level** - Direct links only
+   - **2 levels** - Links and links-of-links
+   - **All levels** - Complete dependency chain
+
+**Graph Features:**
+- Drag nodes to rearrange layout
+- Click nodes to view item details
+- Click edges to view link details
+- Different colors for different item types
+- Different line styles for different link types
+- Zoom and pan for large graphs
+
+**Use Cases:**
+- Visualize impact of changing a requirement
+- Understand complex dependencies
+- Identify circular dependencies
+- Communicate relationships to stakeholders
+
+<Note>
+For projects with hundreds of items, use filters to limit the graph to specific areas of interest. Displaying all items simultaneously can be overwhelming.
+</Note>
+
+</Tab>
+
+<Tab title="Coverage View">
+
+### Coverage Analysis
+
+The coverage view shows traceability completeness metrics:
+
+**How to Use:**
+1. Navigate to View > Coverage Analysis
+2. Select analysis type:
+   - **Forward Traceability** - Requirements → Design → Tests
+   - **Backward Traceability** - Tests → Design → Requirements
+   - **Bidirectional** - Both directions
+
+**Coverage Metrics Displayed:**
+- Percentage of items with at least one link
+- Average links per item
+- Items with no links (orphans)
+- Items violating validation rules
+- Trend over time (improving or degrading)
+
+**Coverage Breakdown:**
+- By item type
+- By item status (active, deprecated, proposed)
+- By owner or team
+- By priority or severity
+
+**Use Cases:**
+- Monitor traceability health over time
+- Identify areas needing attention
+- Report compliance metrics
+- Set team goals for coverage improvement
+
+<Tip>
+Set up a metric in ACE Copilot to track "Traceability Coverage Percentage" and configure alerts if coverage drops below acceptable thresholds (e.g., 90%).
+</Tip>
+
+</Tab>
+
+<Tab title="Impact View">
+
+### Impact Analysis
+
+The impact view shows what would be affected by changes:
+
+**How to Use:**
+1. Right-click any item and select "Analyze Impact"
+2. ACE Copilot displays all items connected through traceability links:
+   - Direct impacts (items directly linked)
+   - Indirect impacts (items linked through intermediaries)
+   - Potential impacts (items in same category or module)
+
+**Impact Report Includes:**
+- List of affected items grouped by type
+- Severity assessment (critical, moderate, low impact)
+- Affected owners who should be notified
+- Estimated effort based on number of affected items
+
+**Use Cases:**
+- Evaluate change requests
+- Plan regression testing scope
+- Notify stakeholders of pending changes
+- Assess risk before making changes
+
+<Warning>
+Impact analysis is only as good as your traceability links. Incomplete or outdated links will result in inaccurate impact assessments. Keep your traceability current.
+</Warning>
+
+</Tab>
+
+</Tabs>
+
+## Compliance and Audit Features
+
+ACE Copilot includes specialized features for regulatory compliance and audit support:
+
+### Compliance Reporting
+
+<Steps>
+
+<Step title="Configure Compliance Standards">
+1. Go to Tools > Compliance Configuration
+2. Add the standards your organization must comply with:
+   - ISO 9001, ISO 13485, ISO 26262
+   - FDA 21 CFR Part 11
+   - DO-178C (Aviation)
+   - IEC 62304 (Medical Devices)
+   - Custom internal standards
+3. For each standard, import or enter specific requirements
+</Step>
+
+<Step title="Map Items to Compliance Requirements">
+1. Create links between your project items and compliance requirements
+2. Use link type "Complies With" or "Satisfies"
+3. Document evidence of compliance in link rationale field
+</Step>
+
+<Step title="Generate Compliance Reports">
+1. Go to Tools > Compliance Reports
+2. Select the standard to report on
+3. Choose report format:
+   - **Compliance Matrix** - Which requirements are satisfied
+   - **Gap Analysis** - Which requirements lack coverage
+   - **Evidence Package** - Full documentation for audit
+4. Configure report options (include evidence, show rationale, etc.)
+5. Click "Generate Report"
+</Step>
+
+<Step title="Review and Export">
+1. Review the report in ACE Copilot
+2. Export to PDF for submission to auditors
+3. Archive report with timestamp for records
+</Step>
+
+</Steps>
+
+### Audit Trail
+
+ACE Copilot automatically tracks all changes to traceability items and links:
+
+**Audit Trail Includes:**
+- Who created, modified, or deleted each item
+- When each change occurred
+- What was changed (before and after values)
+- Why the change was made (if comment provided)
+- IP address and client information
+
+**Accessing Audit Trail:**
+1. Right-click any item and select "View History"
+2. See complete timeline of changes
+3. Filter by date range, user, or change type
+4. Export audit trail to CSV for compliance records
+
+<Note>
+Audit trail data is immutable and cannot be deleted, ensuring integrity for regulatory compliance. The audit trail is automatically included in backup files.
+</Note>
+
+### Electronic Signatures
+
+For regulated industries requiring formal approval:
+
+1. Enable electronic signatures in Tools > Project Settings > Compliance
+2. Define signature workflows (who must sign and when)
+3. When items reach specific states (e.g., "Approved"), prompt for signature
+4. Signers provide:
+   - Username and password
+   - Reason for signature
+   - Timestamp (automatically recorded)
+5. Signed items are locked from further changes unless un-signed
+6. Signature records are included in audit trail
+
+<Warning>
+Electronic signatures should only be enabled if your organization has policies and procedures governing their use. Consult your quality or compliance team before enabling this feature.
+</Warning>
+
+### Baseline Management
+
+Create immutable snapshots of traceability at key milestones:
+
+<Steps>
+
+<Step title="Create a Baseline">
+1. Go to Tools > Baseline Management
+2. Click "Create Baseline"
+3. Provide baseline name (e.g., "Release 2.3 Baseline")
+4. Select what to include (all items or filtered subset)
+5. Add description of the baseline purpose
+</Step>
+
+<Step title="Review Baseline">
+1. Baselines appear in the Baseline Management view
+2. Click to view the complete state at that point in time
+3. Compare current state to baseline to see changes
+</Step>
+
+<Step title="Use Baselines for Compliance">
+- Demonstrate configuration at time of release
+- Show traceability status during audits
+- Prove compliance at specific milestones
+- Support regression testing by comparing to previous baseline
+</Step>
+
+</Steps>
+
+<Tip>
+Create baselines before major releases, before regulatory submissions, and at the end of each development phase. This provides clear evidence of your project state at critical moments.
+</Tip>
+
+### Document Generation
+
+Generate formal compliance documents from traceability data:
+
+**Available Document Templates:**
+- Requirements Traceability Matrix (RTM)
+- Design Verification and Validation Report
+- Test Coverage Report
+- Compliance Evidence Package
+- Audit Response Package
+
+**To Generate Documents:**
+1. Go to File > Generate Document
+2. Select template
+3. Configure document options:
+   - Include/exclude specific sections
+   - Filter items by status or type
+   - Add custom cover page and header/footer
+4. Preview the document
+5. Export to PDF or Word format
+6. Electronically sign if required
+
+## Best Practices for Traceability Management
+
+### Start Early
+
+Begin establishing traceability at project inception, not as an afterthought:
+- Create requirement items as requirements are defined
+- Link design items to requirements as design progresses
+- Link test cases when tests are written, not after execution
+
+### Keep It Current
+
+<Tip>
+Schedule weekly "traceability hygiene" sessions:
+- Review new items and ensure they're linked
+- Update item statuses to reflect current reality
+- Remove or archive obsolete items
+- Run validation checks and address violations
+</Tip>
+
+### Use Clear, Consistent IDs
+
+Establish and enforce ID conventions:
+- **Good:** REQ-FUNC-001, REQ-PERF-001 (categorized)
+- **Better:** REQ-2.3-FUNC-001 (includes version)
+- **Poor:** Requirement 1, Item ABC (inconsistent)
+
+### Document Traceability Rationale
+
+When creating links, add comments explaining:
+- Why this relationship exists
+- How the linked item satisfies the requirement
+- Any assumptions or constraints
+- References to supporting documentation
+
+This context is invaluable during audits and when team members change.
+
+### Balance Completeness and Practicality
+
+<Note>
+Complete traceability is ideal but can be overwhelming for large projects. Prioritize traceability for:
+- Safety-critical requirements
+- Regulatory requirements
+- High-priority features
+- Areas with frequent changes
+
+Lower-priority items may have less rigorous traceability.
+</Note>
+
+### Automate Where Possible
+
+- Import items from existing tools rather than manual re-entry
+- Use synchronization to keep ACE Copilot updated with source systems
+- Set up validation rules to catch issues automatically
+- Create metrics that monitor traceability health
+
+### Train Your Team
+
+Traceability only works if everyone understands and maintains it:
+- Provide training on why traceability matters
+- Document your organization's traceability processes
+- Assign traceability ownership (who maintains links for each area)
+- Include traceability completeness in code review checklists
+
+### Regular Audits
+
+Periodically verify traceability quality:
+- Quarterly: Run full validation and address violations
+- Before releases: Ensure complete coverage for release scope
+- During audits: Generate compliance reports and review with auditors
+- Annually: Review and update traceability processes
+
+### Integration with Metrics
+
+<Tip>
+Connect your traceability to metrics for powerful insights:
+- Create a metric tracking "% Requirements with Test Coverage"
+- Set up alerts if critical requirements lose traceability links
+- Monitor "Average Time to Link New Items" to ensure timely traceability
+- Track "Traceability Validation Violations" over time
+</Tip>
+
+## Advanced Traceability Features
+
+### Custom Link Attributes
+
+Add metadata to links beyond just type:
+1. Go to Tools > Traceability Configuration > Link Attributes
+2. Define custom attributes (e.g., "Verification Method", "Compliance Level")
+3. When creating links, populate these attributes
+4. Filter and report based on link attributes
+
+### Suspect Links
+
+ACE Copilot can automatically flag "suspect" links when linked items change:
+1. Enable suspect link detection in Tools > Traceability Configuration
+2. When an item is modified, all links to/from it are marked "suspect"
+3. Owners must review and confirm the link is still valid
+4. Until confirmed, suspect links appear in yellow in reports
+
+This ensures traceability remains accurate as requirements evolve.
+
+### Traceability Workflows
+
+Define approval workflows for creating or modifying links:
+1. Configure workflow in Tools > Traceability Configuration > Workflows
+2. Specify who can create links and who must approve them
+3. Set up notifications for approvers
+4. Track workflow status in audit trail
+
+Useful for regulated environments where traceability changes require formal approval.
+
+## Next Steps
+
+- Explore **Advanced Reporting** to create custom traceability dashboards
+- Learn about **Metric Integration** to connect traceability with performance metrics
+- Review **Data Integration** to synchronize with Jira, Azure DevOps, or other tools
+- Check **API Documentation** for programmatic access to traceability data

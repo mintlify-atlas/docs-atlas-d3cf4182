@@ -1,0 +1,545 @@
+---
+title: 'Troubleshooting'
+description: 'Solutions to common issues with ACE Copilot installation, performance, and usage'
+---
+
+## Common Issues and Solutions
+
+This guide provides solutions to the most frequently encountered issues with ACE Copilot.
+
+<Tip>
+  Before troubleshooting, ensure you're running the latest version (2.3) of ACE Copilot. Many issues are resolved in updates.
+</Tip>
+
+## Installation Issues
+
+<AccordionGroup>
+  <Accordion title="Windows SmartScreen Warning" icon="shield">
+    **Problem:** Windows displays "Windows protected your PC" warning when installing.
+    
+    **Solution:**
+    
+    <Steps>
+      <Step title="Click 'More info'">
+        Click the **More info** link in the SmartScreen dialog
+      </Step>
+      <Step title="Verify Publisher">
+        Verify the publisher information matches ACE Copilot
+      </Step>
+      <Step title="Run Anyway">
+        Click **Run anyway** to proceed with installation
+      </Step>
+    </Steps>
+    
+    <Note>
+      This warning appears because ACE Copilot is distributed directly rather than through the Microsoft Store. The application is safe to install.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Installation Fails with Error Code" icon="circle-xmark">
+    **Problem:** Installation terminates with an error code or "Installation failed" message.
+    
+    **Solution:**
+    
+    1. **Check Permissions:** Ensure you have administrator rights
+       - Right-click the installer and select **Run as administrator**
+    
+    2. **Clear Temporary Files:**
+       - Press `Win + R`, type `%temp%` and press Enter
+       - Delete all files in the Temp folder
+    
+    3. **Disable Antivirus Temporarily:**
+       - Some antivirus software may block installation
+       - Temporarily disable and retry installation
+       - Re-enable immediately after installation
+    
+    4. **Check Disk Space:**
+       - Ensure you have at least 500MB free on your C: drive
+    
+    5. **Download Fresh Copy:**
+       - The installer may be corrupted
+       - Delete and re-download from the official GitHub release page
+  </Accordion>
+
+  <Accordion title="Missing Prerequisites" icon="puzzle-piece">
+    **Problem:** Application won't install due to missing .NET Framework or other dependencies.
+    
+    **Solution:**
+    
+    ACE Copilot requires:
+    - Windows 10 (version 1809) or later
+    - .NET Framework 4.8 or higher
+    - Visual C++ Redistributable 2019 or later
+    
+    <Steps>
+      <Step title="Install .NET Framework">
+        Download from [Microsoft's official site](https://dotnet.microsoft.com/download/dotnet-framework)
+      </Step>
+      <Step title="Install Visual C++ Redistributable">
+        Download from [Microsoft's download center](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
+      </Step>
+      <Step title="Restart Computer">
+        Restart your computer after installing dependencies
+      </Step>
+      <Step title="Retry Installation">
+        Run the ACE Copilot installer again
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+## Application Launch Issues
+
+<AccordionGroup>
+  <Accordion title="Application Won't Start" icon="power-off">
+    **Problem:** ACE Copilot doesn't launch when clicked, or closes immediately.
+    
+    **Solution:**
+    
+    1. **Check Event Viewer:**
+       - Press `Win + R`, type `eventvwr.msc`
+       - Navigate to Windows Logs > Application
+       - Look for ACE Copilot error entries for specific error codes
+    
+    2. **Reset Application Settings:**
+       - Navigate to `%AppData%\AceCopilot`
+       - Rename the `settings.json` file to `settings.json.backup`
+       - Launch ACE Copilot again (creates new default settings)
+    
+    3. **Check Graphics Drivers:**
+       - Update your graphics drivers to the latest version
+       - ACE Copilot uses hardware acceleration for rendering
+    
+    4. **Run Compatibility Mode:**
+       - Right-click ACE Copilot shortcut > Properties
+       - Click Compatibility tab
+       - Enable "Run this program in compatibility mode for: Windows 8"
+    
+    <Warning>
+      If the application crashes on startup repeatedly, your data files may be corrupted. Contact support with your log files from `%AppData%\AceCopilot\Logs`.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Splash Screen Freezes" icon="hourglass">
+    **Problem:** Application stops responding on the startup splash screen.
+    
+    **Solution:**
+    
+    1. **Wait for Initial Load:**
+       - First launch may take 30-60 seconds depending on system
+       - Subsequent launches should be faster
+    
+    2. **Disable Startup Update Check:**
+       - Edit `%AppData%\AceCopilot\settings.json`
+       - Set `"checkUpdatesOnStartup": false`
+       - This resolves issues when firewall blocks update checks
+    
+    3. **Check Network Connectivity:**
+       - If connected to VPN, try disconnecting temporarily
+       - Firewall rules may need to allow ACE Copilot
+    
+    4. **Clear Cache:**
+       - Delete `%AppData%\AceCopilot\Cache` folder
+       - Restart application
+  </Accordion>
+
+  <Accordion title="License Activation Fails" icon="key">
+    **Problem:** Cannot activate license or "Invalid license" error appears.
+    
+    **Solution:**
+    
+    1. **Verify License Key:**
+       - Ensure no extra spaces before or after the key
+       - Check that you're using a valid license for version 2.x
+    
+    2. **Check Internet Connection:**
+       - License activation requires internet connectivity
+       - Verify you can access https://github.com
+    
+    3. **Firewall/Proxy Issues:**
+       - Configure your firewall to allow ACE Copilot
+       - If behind corporate proxy, configure proxy settings in Settings > Network
+    
+    4. **Contact Licensing:**
+       - If license key is rejected, contact your license administrator
+       - Provide your machine ID from Help > About > System Info
+  </Accordion>
+</AccordionGroup>
+
+## Data Connection Issues
+
+<AccordionGroup>
+  <Accordion title="Cannot Import Data Files" icon="file-import">
+    **Problem:** CSV, Excel, or other data files fail to import.
+    
+    **Solution:**
+    
+    1. **Check File Format:**
+       - Ensure CSV files use UTF-8 encoding
+       - Excel files must be .xlsx (not .xls)
+       - Maximum file size: 100MB
+    
+    2. **Validate Data Structure:**
+       - First row must contain column headers
+       - Date columns must use consistent format (ISO 8601 recommended)
+       - No completely empty rows
+    
+    3. **Remove Special Characters:**
+       - Open file in text editor
+       - Check for NULL characters or invalid UTF-8 sequences
+       - Re-save with proper encoding
+    
+    4. **Use Import Wizard:**
+       - Instead of drag-and-drop, use File > Import Data
+       - Step through wizard to map columns correctly
+       - Preview data before final import
+    
+    <Note>
+      If import fails repeatedly, export a sample project (File > Export Sample) to see the expected format.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Database Connection Errors" icon="database">
+    **Problem:** "Cannot connect to database" or database-related errors.
+    
+    **Solution:**
+    
+    1. **Verify Database Service:**
+       - Check if ACE Copilot database service is running
+       - Open Services (`services.msc`) and look for "ACE Copilot DB Service"
+       - Restart service if stopped
+    
+    2. **Check Database File:**
+       - Navigate to `%AppData%\AceCopilot\Data`
+       - Verify `acecopilot.db` file exists and isn't locked
+       - Check folder permissions (should have write access)
+    
+    3. **Repair Database:**
+       - Close ACE Copilot
+       - Launch with command: `AceCopilot.exe --repair-database`
+       - Wait for repair to complete
+    
+    4. **Restore from Backup:**
+       - Navigate to `%AppData%\AceCopilot\Backups`
+       - Copy most recent `.db` file to Data folder
+       - Rename to `acecopilot.db`
+    
+    <Warning>
+      Database corruption can result in data loss. Always maintain regular backups using File > Export Project.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="API Integration Failures" icon="plug">
+    **Problem:** External API connections fail or timeout.
+    
+    **Solution:**
+    
+    1. **Verify API Credentials:**
+       - Re-enter API key in Settings > Integrations
+       - Check that API key hasn't expired
+       - Verify correct endpoint URL
+    
+    2. **Test Connectivity:**
+       - Use Settings > Integrations > Test Connection
+       - Check error message for specific issue
+    
+    3. **Check Rate Limits:**
+       - Some APIs have rate limits
+       - Reduce sync frequency in Settings > Integrations > Sync Interval
+    
+    4. **Proxy Configuration:**
+       - Configure proxy settings in Settings > Network
+       - Format: `http://proxy.company.com:8080`
+       - Include credentials if required
+  </Accordion>
+</AccordionGroup>
+
+## Performance Issues
+
+<AccordionGroup>
+  <Accordion title="Slow Dashboard Rendering" icon="gauge">
+    **Problem:** Dashboards take a long time to load or feel sluggish.
+    
+    **Solution:**
+    
+    1. **Optimize Data Range:**
+       - Limit date ranges to necessary timeframe
+       - Use filters to reduce displayed data points
+       - Large datasets (50,000+ points) impact performance
+    
+    2. **Enable Hardware Acceleration:**
+       - Settings > Performance > Enable GPU acceleration
+       - Requires compatible graphics card
+       - May need graphics driver update
+    
+     3. **Reduce Visual Complexity:**
+        - Limit number of widgets per dashboard (recommended: fewer than 12)
+        - Simplify chart types (bar charts faster than heatmaps)
+        - Reduce animation effects in Settings > Appearance
+    
+    4. **Increase Memory Allocation:**
+       - Settings > Performance > Maximum Memory
+       - Increase to 2GB or 4GB if available
+       - Restart application after change
+    
+    5. **Clear Cache:**
+       - Settings > Performance > Clear Cache
+       - Improves performance if cache is corrupted
+    
+    <Tip>
+      For optimal performance with large datasets, use aggregated views (monthly instead of daily) and enable data sampling in Settings > Performance.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="High Memory Usage" icon="memory">
+    **Problem:** ACE Copilot uses excessive RAM or causes system slowdown.
+    
+    **Solution:**
+    
+    1. **Check Dashboard Complexity:**
+       - Close unused dashboards
+       - Reduce number of real-time updating widgets
+       - Disable auto-refresh for static data
+    
+    2. **Limit Concurrent Projects:**
+       - Close projects not actively in use
+       - ACE Copilot loads entire project into memory
+    
+    3. **Adjust Cache Settings:**
+       - Settings > Performance > Cache Size
+       - Reduce from default if low on RAM
+       - Recommended: 256MB for systems with 8GB RAM
+    
+    4. **Update to Latest Version:**
+       - Version 2.3 includes 25% memory usage reduction
+       - Check for updates in Help > Check for Updates
+    
+    5. **System Requirements:**
+       - Minimum: 4GB RAM
+       - Recommended: 8GB RAM for datasets >10,000 records
+       - Consider hardware upgrade for very large datasets
+  </Accordion>
+
+  <Accordion title="Application Freezes" icon="snowflake">
+    **Problem:** Application becomes unresponsive during operations.
+    
+    **Solution:**
+    
+    1. **Wait for Operation:**
+       - Some operations (large imports, exports) may take minutes
+       - Check status bar for progress indicator
+       - Don't force-close unless frozen >5 minutes
+    
+    2. **Reduce Background Operations:**
+       - Settings > General > Disable background sync
+       - Pause auto-save during intensive operations
+       - Disable real-time collaboration temporarily
+    
+    3. **Check Disk I/O:**
+       - Open Task Manager > Performance > Disk
+       - If at 100%, close other applications
+       - Consider SSD upgrade for better performance
+    
+    4. **Increase Responsiveness:**
+       - Settings > Performance > Processing Priority: Normal
+       - Enable "Yield to system" option
+       - Process large operations in batches
+  </Accordion>
+</AccordionGroup>
+
+## Export and Report Issues
+
+<AccordionGroup>
+  <Accordion title="PDF Export Fails" icon="file-pdf">
+    **Problem:** PDF generation fails or produces corrupted files.
+    
+    **Solution:**
+    
+    1. **Check Disk Space:**
+       - Ensure at least 1GB free space on C: drive
+       - Large dashboards create temporary files during export
+    
+    2. **Simplify Dashboard:**
+       - Remove or hide unnecessary widgets before export
+       - Reduce image quality in Export Settings
+       - Split into multiple PDFs if very complex
+    
+    3. **Update PDF Renderer:**
+       - Settings > Export > Reinstall PDF Engine
+       - Restarts application after reinstall
+    
+    4. **Try Alternative Format:**
+       - Export as PNG images first
+       - Use third-party tool to combine into PDF
+       - Or export as PowerPoint (available in v2.3)
+    
+    <Note>
+      High-DPI displays may cause scaling issues in PDF exports. Adjust export DPI in Settings > Export > PDF Settings.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Excel Export Missing Data" icon="file-excel">
+    **Problem:** Exported Excel files are incomplete or formatted incorrectly.
+    
+    **Solution:**
+    
+    1. **Check Row Limits:**
+       - Excel 2007+ supports 1,048,576 rows
+       - If exceeding, ACE Copilot truncates data
+       - Solution: Export filtered dataset or use CSV
+    
+    2. **Verify Export Settings:**
+       - File > Export > Configure
+       - Ensure all desired columns are checked
+       - Check "Include calculated fields" if needed
+    
+    3. **Format Compatibility:**
+       - Ensure Excel 2010 or later installed
+       - Export as .xlsx (not .xls)
+       - Update Office to latest version
+    
+    4. **Special Characters:**
+       - Data with special characters may not export correctly
+       - Use CSV export with UTF-8 encoding as alternative
+  </Accordion>
+
+  <Accordion title="Scheduled Reports Not Sending" icon="clock">
+    **Problem:** Automated scheduled reports fail to generate or send.
+    
+    **Solution:**
+    
+    1. **Verify Schedule Settings:**
+       - Settings > Reports > Scheduled Reports
+       - Ensure schedule is enabled (toggle should be green)
+       - Check next run time is in future
+    
+    2. **Check Email Configuration:**
+       - Settings > Reports > Email Settings
+       - Test email connection
+       - Verify SMTP credentials haven't expired
+    
+    3. **Application Must Be Running:**
+       - ACE Copilot must be running for scheduled reports
+       - Or install ACE Copilot Service for background execution
+    
+    4. **Review Report Logs:**
+       - Settings > Reports > View Report Log
+       - Check for specific error messages
+       - Common issues: permissions, email size limits
+    
+    <Tip>
+      For reliable scheduled reporting, consider running ACE Copilot on a dedicated workstation or server that stays powered on.
+    </Tip>
+  </Accordion>
+</AccordionGroup>
+
+## Dashboard and Display Issues
+
+<AccordionGroup>
+  <Accordion title="Charts Not Rendering" icon="chart-line">
+    **Problem:** Dashboards show blank spaces or error icons instead of charts.
+    
+    **Solution:**
+    
+    1. **Refresh Dashboard:**
+       - Click refresh icon or press F5
+       - Sometimes charts fail to load on first attempt
+    
+    2. **Check Data Availability:**
+       - Verify underlying data exists for selected date range
+       - Expand date range to include more data
+       - Check filters aren't excluding all data
+    
+    3. **Clear Rendering Cache:**
+       - Settings > Performance > Clear Rendering Cache
+       - Restart ACE Copilot
+    
+    4. **Update Graphics Drivers:**
+       - Visit GPU manufacturer website
+       - Download and install latest drivers
+       - Restart computer
+    
+    5. **Disable Hardware Acceleration:**
+       - If charts show as black boxes
+       - Settings > Performance > Disable GPU acceleration
+       - May reduce performance but improve compatibility
+  </Accordion>
+
+  <Accordion title="Display Scaling Issues" icon="magnifying-glass">
+    **Problem:** UI elements appear too large, too small, or blurry on high-DPI displays.
+    
+    **Solution:**
+    
+    1. **Adjust Application Scaling:**
+       - Settings > Appearance > UI Scale
+       - Try 100%, 125%, or 150% depending on display
+       - Restart application after change
+    
+    2. **Windows DPI Settings:**
+       - Right-click ACE Copilot shortcut > Properties
+       - Compatibility tab > Change high DPI settings
+       - Select "Override high DPI scaling behavior"
+       - Scaling performed by: Application
+    
+    3. **Font Rendering:**
+       - Settings > Appearance > Font Rendering: ClearType
+       - Improves text clarity on LCD displays
+    
+    <Note>
+      4K displays work best with 150% UI scaling in ACE Copilot settings. Experiment to find optimal setting for your display.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Dark Mode Issues" icon="moon">
+    **Problem:** Some elements don't display correctly in dark mode.
+    
+    **Solution:**
+    
+    1. **Update to Version 2.3:**
+       - Earlier versions had dark mode inconsistencies
+       - Version 2.1+ has full dark mode support
+    
+    2. **Reset Theme:**
+       - Settings > Appearance > Theme: Light
+       - Restart application
+       - Switch back to Dark mode
+    
+    3. **Custom Dashboard Colors:**
+       - Some custom color schemes may not be dark mode compatible
+       - Reset to default color scheme
+       - Or manually adjust colors in dashboard editor
+    
+    4. **Clear Theme Cache:**
+       - Delete `%AppData%\AceCopilot\Themes` folder
+       - Restart application (regenerates default themes)
+  </Accordion>
+</AccordionGroup>
+
+## Getting Additional Help
+
+If these solutions don't resolve your issue:
+
+<Steps>
+  <Step title="Collect Diagnostic Information">
+    Help > Generate Diagnostic Report (saves to Desktop)
+  </Step>
+  <Step title="Check GitHub Issues">
+    Visit the [GitHub repository](https://github.com/alfonsovelardem/ace-copilot/issues) to see if others have reported similar issues
+  </Step>
+  <Step title="Contact Support">
+    Create a new GitHub issue with your diagnostic report and detailed description of the problem
+  </Step>
+</Steps>
+
+<Warning>
+  Never share diagnostic reports publicly if they contain sensitive corporate data. Redact confidential information before posting.
+</Warning>
+
+## Log Files Location
+
+For advanced troubleshooting, log files are located at:
+- **Application Logs:** `%AppData%\AceCopilot\Logs`
+- **Crash Dumps:** `%AppData%\AceCopilot\CrashDumps`
+- **Database Logs:** `%AppData%\AceCopilot\Data\logs`
+
+Include relevant log files when reporting issues to support.
